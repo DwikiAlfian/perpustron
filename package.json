@@ -1,5 +1,5 @@
 {
-  "description": "A foundation for scalable desktop apps",
+  "description": "Perpustakaan made with React & Electron",
   "keywords": [
     "electron",
     "boilerplate",
@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
+    "name": "Perpustakaan React & Electron",
     "email": "electronreactboilerplate@gmail.com",
     "url": "https://electron-react-boilerplate.js.org"
   },
@@ -114,7 +114,9 @@
     "electron-updater": "^5.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
+    "react-tabs": "^5.1.0"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
@@ -185,8 +187,8 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.erb.ElectronReact",
+    "productName": "PerpustakaanReactElectron",
+    "appId": "org.erb.PerpustakaanReactElectron",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [

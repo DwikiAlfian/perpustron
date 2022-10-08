@@ -1,62 +1,423 @@
-/*
- * @NOTE: Prepend a `~` to css file paths that are in your node_modules
- *        See https://github.com/webpack-contrib/sass-loader#imports
- */
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets/fonts/quicksand.ttf');
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('../assets/fonts/lexend.ttf');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'Quicksand';
+  outline: none;
+  -webkit-user-drag: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lexend';
+}
 body {
-  position: relative;
-  color: white;
+  padding: 5px;
+  overflow: hidden;
   height: 100vh;
-  background: linear-gradient(
-    200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
-  );
-  font-family: sans-serif;
-  overflow-y: hidden;
+}
+#root {
+  height: 100%;
+}
+body.dark-layout h1,
+body.dark-layout h2,
+body.dark-layout h3,
+body.dark-layout h4,
+body.dark-layout h5,
+body.dark-layout h6 {
+  color: rgba(240, 240, 240);
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 30, 0.07);
+  border-radius: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(30, 30, 30, 0.15);
+  border-radius: 7px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 30, 30, 0.25);
+}
+body.dark-layout ::-webkit-scrollbar-track {
+  background: rgba(240, 240, 240, 0.07);
+  border-radius: 7px;
+}
+
+/* Handle */
+body.dark-layout ::-webkit-scrollbar-thumb {
+  background: rgba(240, 240, 240, 0.15);
+  border-radius: 7px;
+}
+
+/* Handle on hover */
+body.dark-layout ::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 240, 240, 0.25);
+}
+
+/* ============== */
+/* APP COMPONENTS */
+/* ============== */
+.app-container {
+  background-color: rgba(240, 240, 240);
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  padding: 80px 20px 20px 20px;
+  box-shadow: 0 0 5px 1px rgba(30, 30, 30, 0.25);
+}
+body.dark-layout .app-container {
+  background-color: rgba(30, 30, 30);
+  box-shadow: 0 0 5px 1px rgba(30, 30, 30, 0.75);
+}
+.app-navbar {
+  position: fixed;
+  z-index: 100;
+  width: calc(100% - 10px);
+  padding: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  background-color: rgba(30, 30, 30, 0.07);
+  border-radius: 15px 15px 0 0;
+  -webkit-app-region: drag;
+}
+body.dark-layout .app-navbar {
+  background-color: rgba(240, 240, 240, 0.07);
+}
+.app-modal {
+  position: absolute;
+  z-index: -1;
+  height: calc(100vh - 10px);
+  width: calc(100vw - 10px);
+  top: 0;
+  left: 0;
+  background-color: rgba(30, 30, 30, 0.5);
+  backdrop-filter: blur(3px);
+  border-radius: 15px;
+  animation-name: fade-in;
+  animation-duration: 200ms;
+  opacity: 1;
+}
+.app-modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(240, 240, 240);
+  min-width: 350px;
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px 1px rgba(30, 30, 30, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+body.dark-layout .app-modal {
+  background-color: rgba(20, 20, 20, 0.7);
+}
+body.dark-layout .app-modal-content {
+  background-color: rgba(40, 40, 40);
+  box-shadow: 0 0 15px 1px rgba(30, 30, 30, 0.025);
+}
+
+/* ======== */
+/* Stylings */
+/* ======== */
+.icon {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: rgba(30, 30, 30, 0.1);
+  cursor: pointer;
+  transition: background-color 150ms;
+  -webkit-app-region: no-drag;
+}
+.icon svg {
+  color: rgba(30, 30, 30, 0.25);
+  transition: color 150ms;
+}
+.icon:hover {
+  background-color: rgba(30, 30, 30, 0.2);
+}
+.icon:hover svg {
+  color: rgba(30, 30, 30, 0.75);
+}
+body.dark-layout .icon {
+  background-color: rgba(240, 240, 240, 0.1);
+}
+body.dark-layout .icon svg {
+  color: rgba(240, 240, 240, 0.5);
+}
+body.dark-layout .icon:hover {
+  background-color: rgba(240, 240, 240, 0.2);
+}
+body.dark-layout .icon:hover svg {
+  color: rgba(240, 240, 240, 0.75);
+}
+
+.span-text {
+  font-size: 0.8rem;
+  color: rgba(30, 30, 30, 0.7);
+}
+body.dark-layout .span-text {
+  color: rgba(240, 240, 240, 0.5);
 }
 
 button {
-  background-color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
   border: none;
-  appearance: none;
-  font-size: 1.3rem;
-  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
-  transition: all ease-in 0.1s;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px 15px;
+  border-radius: 7px;
   cursor: pointer;
-  opacity: 0.9;
+  font-weight: bold;
+  transition: background-color 150ms, color 150ms;
+  flex-shrink: 0;
+}
+.button-confirm {
+  color: white;
+  background-color: rgba(0, 117, 255);
+}
+.button-confirm:hover {
+  background-color: rgba(0, 87, 215);
+}
+.button-confirm-trans {
+  color: rgba(0, 117, 255);
+  background-color: rgba(0, 117, 255, 0.25);
+}
+.button-confirm-trans:hover {
+  color: white;
+  background-color: rgba(0, 87, 215);
+}
+.button-grey {
+  color: rgba(30, 30, 30, 0.5);
+}
+.button-grey:hover {
+  background-color: rgba(30, 30, 30, 0.05);
+}
+body.dark-layout .button-grey {
+  color: rgba(240, 240, 240, 0.5);
+}
+body.dark-layout .button-grey:hover {
+  background-color: rgba(240, 240, 240, 0.05);
+}
+.button-grey-alt {
+  color: rgba(30, 30, 30, 0.5);
+  background-color: rgba(30, 30, 30, 0.07);
+}
+.button-grey-alt:hover {
+  background-color: rgba(30, 30, 30, 0.1);
+}
+body.dark-layout .button-grey-alt {
+  color: rgba(240, 240, 240, 0.5);
+  background-color: rgba(240, 240, 240, 0.07);
+}
+body.dark-layout .button-grey-alt:hover {
+  background-color: rgba(240, 240, 240, 0.1);
 }
 
-button:hover {
-  transform: scale(1.05);
-  opacity: 1;
+.container {
+  background-color: rgba(30, 30, 30, 0.07);
+  padding: 15px;
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+body.dark-layout .container {
+  background-color: rgba(240, 240, 240, 0.07);
+}
+/* .container-content {
+  min-height: 250px;
+} */
+
+input.input {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 7px;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgba(240, 240, 240);
+  transition: box-shadow 150ms;
+}
+input.input:hover {
+  box-shadow: 0 0 0 2px rgba(0, 117, 255, 0.25) inset;
+}
+input.input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 117, 255) inset;
+}
+body.dark-layout input.input {
+  background-color: rgba(30, 30, 30, 0.5);
+  color: rgba(240, 240, 240);
 }
 
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  height: fit-content;
-  width: fit-content;
-  margin: 10px;
-}
-
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-}
-
-.Hello {
+.book-list {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  height: calc(100% - 40px);
+}
+.book-list .book-list-content {
+  background-color: rgba(240, 240, 240);
+  padding: 10px 15px;
+  border-radius: 7px;
+  transition: background-color 150ms;
+  position: relative;
+}
+.book-list .book-list-content button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: calc(100% - 20px);
+}
+.book-list .book-list-content:hover {
+  background-color: rgba(240, 240, 240, 0.65);
+}
+body.dark-layout .book-list .book-list-content {
+  background-color: rgba(30, 30, 30, 0.5);
+}
+body.dark-layout .book-list .book-list-content:hover {
+  background-color: rgba(30, 30, 30, 0.65);
+}
+
+.flex-inline {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  margin: 20px 0;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-justify-end {
+  justify-content: flex-end;
+}
+
+.gap-5 {
+  gap: 5px;
+}
+.gap-10 {
+  gap: 10px;
+}
+.gap-15 {
+  gap: 15px;
+}
+.gap-20 {
+  gap: 20px;
+}
+
+.react-tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  height: 100%;
+}
+.react-tabs__tab-list {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  flex-shrink: 0;
+  list-style-type: none;
+  gap: 10px;
+}
+.react-tabs__tab-list .react-tabs__tab {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: rgba(30, 30, 30, 0.5);
+  transition: background-color 150ms, color 150ms;
+}
+body.dark-layout .react-tabs__tab-list .react-tabs__tab {
+  color: rgba(240, 240, 240, 0.5);
+}
+.react-tabs__tab-list .react-tabs__tab:hover {
+  background-color: rgba(30, 30, 30, 0.07);
+}
+body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
+  background-color: rgba(240, 240, 240, 0.07);
+}
+.react-tabs__tab-list .react-tabs__tab--selected {
+  background-color: rgba(0, 117, 255) !important;
+  color: white !important;
+  transition: background-color 150ms, color 150ms;
+}
+.react-tabs__tab-list .react-tabs__tab--selected:hover {
+  background-color: rgba(0, 87, 215) !important;
+}
+.react-tabs__tab-panel {
+  display: none;
+}
+.react-tabs__tab-panel.react-tabs__tab-panel--selected {
+  display: flex;
+  width: 100%;
+}
+
+/* Animation Styling */
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 350ms;
+  opacity: 1;
+}
+.fade-out {
+  animation-name: fade-out;
+  animation-duration: 200ms;
+  opacity: 0;
+}
+.fade-fly-in {
+  animation-name: fade-fly-in;
+  animation-duration: 1000ms;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-fly-in {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+  }
 }

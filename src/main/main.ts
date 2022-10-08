@@ -71,14 +71,20 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728,
+    width: 980,
+    height: 640,
+    minWidth: 980,
+    minHeight: 640,
     icon: getAssetPath('icon.png'),
     webPreferences: {
-      preload: app.isPackaged
-        ? path.join(__dirname, 'preload.js')
-        : path.join(__dirname, '../../.erb/dll/preload.js'),
+      // preload: app.isPackaged
+      //   ? path.join(__dirname, 'preload.js')
+      //   : path.join(__dirname, '../../.erb/dll/preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false,
     },
+    frame: false,
+    transparent: true,
   });
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
@@ -135,3 +141,14 @@ app
     });
   })
   .catch(console.log);
+
+// ====================
+// .:: Custom Event ::.
+// ====================
+// Quitting Application
+ipcMain.handle('close-event', () => {
+  app.quit();
+});
+ipcMain.handle('minimize-event', () => {
+  mainWindow?.minimize();
+});
