@@ -149,6 +149,15 @@ app
 ipcMain.handle('close-event', () => {
   app.quit();
 });
+// Minimize Application
 ipcMain.handle('minimize-event', () => {
   mainWindow?.minimize();
+});
+// Maximize Application
+ipcMain.handle('maximize-event', () => {
+  mainWindow?.maximize();
+});
+// Unmaximize Application
+ipcMain.handle('unmaximize-event', () => {
+  mainWindow?.unmaximize();
 });

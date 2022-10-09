@@ -22,6 +22,7 @@ h4,
 h5,
 h6 {
   font-family: 'Lexend';
+  color: rgba(50, 50, 50);
 }
 body {
   padding: 5px;
@@ -84,7 +85,7 @@ body.dark-layout ::-webkit-scrollbar-thumb:hover {
   height: 100%;
   width: 100%;
   border-radius: 15px;
-  padding: 80px 20px 20px 20px;
+  padding: 90px 20px 20px 20px;
   box-shadow: 0 0 5px 1px rgba(30, 30, 30, 0.25);
 }
 body.dark-layout .app-container {
@@ -99,7 +100,7 @@ body.dark-layout .app-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(30, 30, 30, 0.07);
+  background-color: rgba(230, 230, 230);
   border-radius: 15px 15px 0 0;
   -webkit-app-region: drag;
 }
@@ -114,7 +115,7 @@ body.dark-layout .app-navbar {
   top: 0;
   left: 0;
   background-color: rgba(30, 30, 30, 0.5);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(5px);
   border-radius: 15px;
   animation-name: fade-in;
   animation-duration: 200ms;
@@ -146,8 +147,8 @@ body.dark-layout .app-modal-content {
 /* Stylings */
 /* ======== */
 .icon {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,16 +180,131 @@ body.dark-layout .icon:hover {
 body.dark-layout .icon:hover svg {
   color: rgba(240, 240, 240, 0.75);
 }
+.icon.icon-theme {
+  gap: 5px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 12px;
+}
+.icon.icon-theme span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: rgba(30, 30, 30, 0.5);
+}
+body.dark-layout .icon.icon-theme span {
+  color: rgba(240, 240, 240, 0.5);
+}
+.icon.icon-status {
+  max-width: 0;
+  width: max-content;
+  overflow: hidden;
+  background-color: rgb(0, 255, 85);
+  font-weight: bold;
+  gap: 5px;
+  cursor: default;
+}
+.icon.icon-status.icon-status-primary {
+  background-color: rgba(0, 117, 255);
+}
+.icon.icon-status.icon-status-danger {
+  background-color: rgba(255, 20, 50);
+}
+.icon.icon-status.icon-status-primary span,
+.icon.icon-status.icon-status-primary svg,
+.icon.icon-status.icon-status-danger span,
+.icon.icon-status.icon-status-danger svg {
+  color: rgba(240, 240, 240) !important;
+}
+.icon.icon-status.icon-start {
+  animation-name: icon-status;
+  animation-duration: 3000ms;
+}
+.icon.icon-status span {
+  color: rgba(30, 30, 30) !important;
+  white-space: nowrap;
+}
+.icon.icon-status svg {
+  color: rgba(30, 30, 30) !important;
+}
+.icon.icon-status.icon-start span,
+.icon.icon-status.icon-start svg {
+  animation-name: icon-status-text;
+  animation-duration: 3000ms;
+}
+body.dark-layout .icon.icon-status {
+  background-color: rgba(0, 255, 85);
+}
+body.dark-layout .icon.icon-status.icon-status-primary {
+  background-color: rgba(0, 117, 255);
+}
+body.dark-layout .icon.icon-status.icon-status-danger {
+  background-color: rgba(255, 20, 50);
+}
+@keyframes icon-status {
+  0% {
+    max-width: 0;
+  }
+  5% {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  25% {
+    max-width: 350px;
+  }
+  75% {
+    max-width: 350px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  90% {
+    max-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  100% {
+    max-width: 0;
+  }
+}
+@keyframes icon-status-text {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 .span-text {
-  font-size: 0.8rem;
+  font-size: 0.86rem;
   color: rgba(30, 30, 30, 0.7);
 }
 body.dark-layout .span-text {
   color: rgba(240, 240, 240, 0.5);
 }
+.span-pill {
+  display: block;
+  background-color: rgba(0, 117, 255);
+  color: white;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+}
 
 button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
   border: none;
   background-color: rgba(0, 0, 0, 0);
   padding: 10px 15px;
@@ -202,8 +318,22 @@ button {
   color: white;
   background-color: rgba(0, 117, 255);
 }
+.button-confirm.button-confirm-line {
+  color: rgba(0, 117, 255);
+  background-color: rgba(0, 117, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(0, 117, 255);
+}
 .button-confirm:hover {
   background-color: rgba(0, 87, 215);
+  color: white;
+}
+.button-confirm.button-confirm-alt {
+  background-color: rgb(0, 255, 85);
+  color: rgba(30, 30, 30);
+}
+.button-confirm.button-confirm-alt:hover {
+  background-color: rgb(0, 205, 5);
+  color: rgba(30, 30, 30);
 }
 .button-confirm-trans {
   color: rgba(0, 117, 255);
@@ -212,6 +342,12 @@ button {
 .button-confirm-trans:hover {
   color: white;
   background-color: rgba(0, 87, 215);
+}
+body.dark-layout .button-confirm-trans {
+  color: rgba(30, 147, 255);
+}
+body.dark-layout .button-confirm-trans:hover {
+  color: white;
 }
 .button-grey {
   color: rgba(30, 30, 30, 0.5);
@@ -241,7 +377,7 @@ body.dark-layout .button-grey-alt:hover {
 }
 
 .container {
-  background-color: rgba(30, 30, 30, 0.07);
+  background-color: rgba(30, 30, 30, 0.05);
   padding: 15px;
   border-radius: 7px;
   width: 100%;
@@ -255,7 +391,16 @@ body.dark-layout .container {
   min-height: 250px;
 } */
 
-input.input {
+.in-app-modal {
+  z-index: 10;
+  top: 5px;
+  left: 5px;
+}
+.in-app-modal .app-modal-content {
+  width: 550px;
+}
+
+.input {
   border: none;
   padding: 10px 15px;
   border-radius: 7px;
@@ -263,14 +408,18 @@ input.input {
   font-weight: bold;
   background-color: rgba(240, 240, 240);
   transition: box-shadow 150ms;
+  resize: none;
 }
-input.input:hover {
+textarea.input {
+  min-height: 100px;
+}
+.input:hover {
   box-shadow: 0 0 0 2px rgba(0, 117, 255, 0.25) inset;
 }
-input.input:focus {
+.input:focus {
   box-shadow: 0 0 0 2px rgba(0, 117, 255) inset;
 }
-body.dark-layout input.input {
+body.dark-layout .input {
   background-color: rgba(30, 30, 30, 0.5);
   color: rgba(240, 240, 240);
 }
@@ -282,17 +431,66 @@ body.dark-layout input.input {
   height: calc(100% - 40px);
 }
 .book-list .book-list-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background-color: rgba(240, 240, 240);
-  padding: 10px 15px;
+  padding: 15px 70px 15px 50px;
   border-radius: 7px;
   transition: background-color 150ms;
   position: relative;
+  cursor: pointer;
 }
-.book-list .book-list-content button {
+.book-list .book-list-content .container {
+  /* display: none; */
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 350ms ease-in-out, margin-top 550ms ease-in-out,
+    padding-top 350ms ease-in-out, padding-bottom 350ms ease-in-out,
+    opacity 750ms;
+  cursor: default;
+  opacity: 0;
+}
+.book-list .book-list-content.book-list-open .container {
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 500px;
+  margin-top: 10px;
+  transition: max-height 350ms ease-in-out, margin-top 250ms ease-in-out,
+    padding-top 350ms ease-in-out, padding-bottom 350ms ease-in-out,
+    opacity 350ms;
+  opacity: 1;
+}
+.book-list .book-list-content .book-chevron-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: rgba(30, 30, 30, 0.35);
+  transition: transform 350ms, color 350ms;
+}
+.book-list .book-list-content.book-list-open .book-chevron-icon {
+  transform: translateY(-50%) rotateZ(180deg);
+  color: rgba(30, 30, 30, 0.75);
+}
+.book-list .book-list-content > button {
   position: absolute;
   right: 10px;
   top: 10px;
   height: calc(100% - 20px);
+}
+body.dark-layout .book-list .book-list-content .book-chevron-icon {
+  color: rgba(240, 240, 240, 0.35);
+}
+body.dark-layout
+  .book-list
+  .book-list-content.book-list-open
+  .book-chevron-icon {
+  color: rgba(240, 240, 240, 0.75);
 }
 .book-list .book-list-content:hover {
   background-color: rgba(240, 240, 240, 0.65);
@@ -315,6 +513,15 @@ body.dark-layout .book-list .book-list-content:hover {
 }
 .flex-justify-end {
   justify-content: flex-end;
+}
+.flex-justify-between {
+  justify-content: space-between;
+}
+.flex-align-start {
+  align-items: flex-start;
+}
+.flex-align-end {
+  align-items: flex-end;
 }
 
 .gap-5 {
@@ -351,7 +558,7 @@ body.dark-layout .book-list .book-list-content:hover {
   font-weight: bold;
   font-size: 0.8rem;
   color: rgba(30, 30, 30, 0.5);
-  transition: background-color 150ms, color 150ms;
+  transition: background-color 350ms, color 150ms;
 }
 body.dark-layout .react-tabs__tab-list .react-tabs__tab {
   color: rgba(240, 240, 240, 0.5);
@@ -365,7 +572,7 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
 .react-tabs__tab-list .react-tabs__tab--selected {
   background-color: rgba(0, 117, 255) !important;
   color: white !important;
-  transition: background-color 150ms, color 150ms;
+  transition: background-color 350ms, color 150ms;
 }
 .react-tabs__tab-list .react-tabs__tab--selected:hover {
   background-color: rgba(0, 87, 215) !important;

@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { BsX } from 'react-icons/bs';
+import {
+  BsX,
+  BsFillCheckCircleFill,
+  BsExclamationDiamondFill,
+  BsPencilSquare,
+} from 'react-icons/bs';
+import { BiWindow, BiWindows } from 'react-icons/bi';
 import { HiOutlineMinusSm, HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
 import useLocalStorage from 'renderer/hooks/useLocalStorage';
 
 export default function Navbar() {
+  const [isMaximize, setIsMaximize] = useState(false);
+
   // Calling IPC Renderer
   const ipcRenderer = window.require('electron')?.ipcRenderer;
 
@@ -16,6 +24,18 @@ export default function Navbar() {
   const minimizeWindow = () => {
     ipcRenderer?.invoke('minimize-event');
   };
+
+  // Maximize Window Function
+  const maximizeWindow = () => {
+    setIsMaximize((prevState) => !prevState);
+  };
+  useEffect(() => {
+    if (isMaximize) {
+      ipcRenderer?.invoke('maximize-event');
+    } else {
+      ipcRenderer?.invoke('unmaximize-event');
+    }
+  }, [isMaximize]);
 
   // Open Close Modal
   const [closeModal, setCloseModal] = useState(false);
@@ -73,6 +93,7 @@ export default function Navbar() {
           >
             <div
               className="app-modal-content"
+              style={{ textAlign: 'center', paddingTop: 25 }}
               onClick={(e) => {
                 e.stopPropagation();
               }}
@@ -80,8 +101,8 @@ export default function Navbar() {
               <h4>Are you sure to close the app?</h4>
               <span className="span-text">Unsaved changes will be lost</span>
               <div
-                className="flex-inline gap-5"
-                style={{ marginLeft: 'auto', marginTop: 15 }}
+                className="flex-inline flex-justify-between gap-5"
+                style={{ marginTop: 15 }}
               >
                 <button
                   className="button-grey"
@@ -115,16 +136,40 @@ export default function Navbar() {
           <h4 style={{ marginLeft: 7 }}>.perpustakaan</h4>
         </div>
         <div className="flex-inline gap-5">
+          <div className="icon icon-status icon-status-success">
+            <BsPencilSquare size={16} />
+            <span id="successtext" className="span-text">
+              Success
+            </span>
+          </div>
+          <div className="icon icon-status icon-status-primary">
+            <BsFillCheckCircleFill size={16} />
+            <span id="primarytext" className="span-text">
+              Primary
+            </span>
+          </div>
+          <div className="icon icon-status icon-status-danger">
+            <BsExclamationDiamondFill size={16} />
+            <span id="dangertext" className="span-text">
+              Danger
+            </span>
+          </div>
           <div
-            className="icon"
+            className="icon icon-theme"
             onClick={() => {
               changeTheme();
             }}
           >
             {theme === 'dark' ? (
-              <HiOutlineSun size={14} />
+              <>
+                <HiOutlineSun size={14} />
+                <span>Light</span>
+              </>
             ) : (
-              <HiOutlineMoon size={14} />
+              <>
+                <HiOutlineMoon size={14} />
+                <span>Dark</span>
+              </>
             )}
           </div>
           <div
@@ -134,6 +179,14 @@ export default function Navbar() {
             }}
           >
             <HiOutlineMinusSm size={18} />
+          </div>
+          <div
+            className="icon"
+            onClick={() => {
+              maximizeWindow();
+            }}
+          >
+            {isMaximize ? <BiWindows size={18} /> : <BiWindow size={18} />}
           </div>
           <div
             className="icon"
