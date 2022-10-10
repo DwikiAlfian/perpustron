@@ -1,12 +1,12 @@
 {
-  "name": "electron-react-boilerplate",
-  "version": "4.6.0",
-  "description": "A foundation for scalable desktop apps",
+  "name": "PerpustakaanElectronBeta",
+  "version": "0.1.1",
+  "description": "Perpustakaan built with React & Electron",
   "license": "MIT",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://github.com/electron-react-boilerplate"
+    "name": "xxevnxxe",
+    "email": "dwikialfian92@gmail.com",
+    "url": "https://dwikialfian.github.io/DwikiAlfian"
   },
   "main": "./dist/main/main.js",
   "scripts": {

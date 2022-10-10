@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { HiOutlineTrash, HiChevronDown } from 'react-icons/hi';
 import { RiAddCircleLine, RiEdit2Fill } from 'react-icons/ri';
-import { BsFillPersonPlusFill } from 'react-icons/bs';
+import { BsFillPersonPlusFill, BsSearch } from 'react-icons/bs';
 import useStatus from 'renderer/hooks/useStatus';
 import AddGuestsModal from './AddGuestsModal';
 import EditGuestsModal from './EditGuestsModal';
+import DataLists from './DataLists';
 
 export default function Guests({ guests, setGuests }) {
+  // Input & State
   const [currentId, setCurrentId] = useState();
   const [currentIndex, setCurrentIndex] = useState();
   const [name, setName] = useState();
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
+  const [search, setSearch] = useState();
+  const [savedSearch, setSavedSearch] = useState();
 
+  // Modals State
   const [guestModal, setGuestModal] = useState(false);
   const [editGuestModal, setEditGuestModal] = useState(false);
 
+  // Show / Hide Add Modal
   const modalFunction = () => {
     setName('');
     setTitle('');
@@ -32,6 +38,7 @@ export default function Guests({ guests, setGuests }) {
     }
   };
 
+  // Set current data for editing
   const setCurrentData = ({ id, index, name, title, desc }) => {
     setCurrentId(id);
     setCurrentIndex(index);
@@ -41,6 +48,13 @@ export default function Guests({ guests, setGuests }) {
     saveModalFunction();
   };
 
+  // Set guests new ID when adding
+  const getLatestId = () => {
+    let latest = guests ? guests[0]?.id : 0;
+    return latest;
+  };
+
+  // Show / Hide Edit Modal
   const saveModalFunction = () => {
     if (!editGuestModal) {
       setEditGuestModal((prevState) => !prevState);
@@ -58,11 +72,9 @@ export default function Guests({ guests, setGuests }) {
     }
   };
 
-  const getLatestId = () => {
-    let latest = guests ? guests[0]?.id : 0;
-    return latest;
-  };
-
+  // ==============
+  // ADD New Guests
+  // ==============
   const addNewGuest = () => {
     let newId;
 
@@ -100,6 +112,9 @@ export default function Guests({ guests, setGuests }) {
     }
   };
 
+  // ==================
+  // DELETE Guests Data
+  // ==================
   const deleteGuest = (num) => {
     const array = [...guests];
     array?.splice(num, 1);
@@ -107,6 +122,9 @@ export default function Guests({ guests, setGuests }) {
     useStatus('danger', 'Successfully Deleted');
   };
 
+  // ================
+  // EDIT Guests Data
+  // ================
   const saveGuest = (num) => {
     const array = [...guests];
     array?.splice(num, 1, {
@@ -123,6 +141,9 @@ export default function Guests({ guests, setGuests }) {
     saveModalFunction();
   };
 
+  // ================
+  // Open List Detail
+  // ================
   const openDrawer = (e) => {
     if (e.currentTarget.classList.contains('book-list-open')) {
       e.currentTarget.classList.remove('book-list-open');
@@ -130,6 +151,16 @@ export default function Guests({ guests, setGuests }) {
       e.currentTarget.classList.add('book-list-open');
     }
   };
+
+  useEffect(() => {
+    try {
+      const array = guests && guests.length > 0 && [...guests];
+      let result = array?.filter((item) =>
+        item?.name?.toLowerCase().includes(search?.toLowerCase())
+      );
+      setSavedSearch(result);
+    } catch (e) {}
+  }, [search]);
 
   return (
     <>
@@ -165,9 +196,18 @@ export default function Guests({ guests, setGuests }) {
         saveModalFunction={saveModalFunction}
       />
       <div className="flex-column gap-20" style={{ width: '100%' }}>
-        <div className="flex-inline flex-justify-end gap-15">
+        <div className="flex-inline flex-justify-between gap-15">
+          <div className="input-alt">
+            <BsSearch size={12} />
+            <input
+              className="input input-alt"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by name..."
+            />
+          </div>
+
           <button
-            className="button-grey-alt"
+            className={`button-grey-alt ${search ? 'button-hide' : ''}`}
             onClick={() => {
               modalFunction();
             }}
@@ -179,84 +219,23 @@ export default function Guests({ guests, setGuests }) {
         <div className="container">
           <div className="container-content fade-fly-in">
             <div className="book-list">
-              {guests &&
-                guests?.map((guest, index) => {
-                  return (
-                    <>
-                      <div
-                        className="book-list-content"
-                        onClick={(e) => {
-                          openDrawer(e);
-                        }}
-                      >
-                        <HiChevronDown
-                          className="book-chevron-icon"
-                          size={20}
-                        />
-                        <h4>{guest?.name}</h4>
-                        <span className="span-pill" style={{ marginTop: 7 }}>
-                          {guest?.title}
-                        </span>
-                        <div
-                          className="container flex-column gap-5"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                          }}
-                        >
-                          <div className="flex-inline flex-align-start flex-justify-between">
-                            <div className="flex-column gap-5">
-                              <span className="span-text">
-                                Purpose : {guest?.desc}
-                              </span>
-                            </div>
-                            <button
-                              className="button-confirm-trans"
-                              onClick={() => {
-                                setCurrentData({
-                                  index: index,
-                                  id: guest?.id,
-                                  name: guest?.name,
-                                  title: guest?.title,
-                                  desc: guest?.desc,
-                                });
-                              }}
-                            >
-                              <RiEdit2Fill size="14" />
-                              Edit Data
-                            </button>
-                          </div>
-                        </div>
-                        <button
-                          className="button-confirm-trans"
-                          onClick={(e) => {
-                            deleteGuest(index);
-                            e.stopPropagation();
-                          }}
-                        >
-                          <HiOutlineTrash size="14" />
-                        </button>
-                      </div>
-                    </>
-                  );
-                })}
-              {!guests ||
-                (guests.length === 0 && (
-                  <>
-                    <div
-                      style={{
-                        textAlign: 'center',
-                        height: 300,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
-                      }}
-                    >
-                      <h4>No guests is written!</h4>
-                      <span className="span-text">Try add list a guest</span>
-                    </div>
-                  </>
-                ))}
+              {!search && guests ? (
+                <DataLists
+                  datas={guests}
+                  deleteGuest={deleteGuest}
+                  setCurrentData={setCurrentData}
+                  openDrawer={openDrawer}
+                />
+              ) : search && savedSearch ? (
+                <DataLists
+                  datas={savedSearch}
+                  deleteGuest={deleteGuest}
+                  setCurrentData={setCurrentData}
+                  openDrawer={openDrawer}
+                />
+              ) : (
+                <h4>No Data to be shown</h4>
+              )}
             </div>
           </div>
         </div>

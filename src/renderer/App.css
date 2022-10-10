@@ -311,8 +311,10 @@ button {
   border-radius: 7px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 150ms, color 150ms;
+  transition: background-color 150ms, color 150ms, padding 150ms, width 150ms;
   flex-shrink: 0;
+  width: max-content;
+  max-width: 550px;
 }
 .button-confirm {
   color: white;
@@ -375,6 +377,13 @@ body.dark-layout .button-grey-alt {
 body.dark-layout .button-grey-alt:hover {
   background-color: rgba(240, 240, 240, 0.1);
 }
+.button-hide {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 0;
+  padding-right: 0;
+}
 
 .container {
   background-color: rgba(30, 30, 30, 0.05);
@@ -422,6 +431,30 @@ textarea.input {
 body.dark-layout .input {
   background-color: rgba(30, 30, 30, 0.5);
   color: rgba(240, 240, 240);
+}
+.input-alt {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.input-alt .input {
+  background-color: rgba(230, 230, 230);
+  height: 100%;
+  padding-left: 40px;
+}
+body.dark-layout .input-alt .input {
+  background-color: rgba(45, 45, 45);
+}
+.input-alt svg {
+  position: absolute;
+  z-index: 1;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(30, 30, 30, 0.5);
+}
+body.dark-layout .input-alt svg {
+  color: rgba(240, 240, 240, 0.5);
 }
 
 .book-list {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { HiOutlineTrash } from 'react-icons/hi';
 import { RiAddCircleLine } from 'react-icons/ri';
 
 const AddGuestsModal = ({
