@@ -233,7 +233,7 @@ export default function Books({ books, setBooks }) {
         saveModalFunction={saveModalFunction}
       />
       <div className="flex-column gap-20" style={{ width: '100%' }}>
-        <div className="flex-inline flex-justify-between gap-15">
+        <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
           <div className="input-alt">
             <BsSearch size={12} />
             <input
@@ -243,7 +243,7 @@ export default function Books({ books, setBooks }) {
             />
           </div>
           <button
-            className="button-grey-alt"
+            className={`button-grey-alt ${search ? 'button-hide' : ''}`}
             onClick={() => {
               modalFunction();
             }}
