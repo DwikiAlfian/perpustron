@@ -79,6 +79,7 @@ const Container = () => {
 export default function App() {
   return (
     <Router>
+      <div id="overlay"></div>
       <Navbar />
       <Routes>
         <Route path="/" element={<Container />} />

@@ -152,6 +152,15 @@ export default function Guests({ guests, setGuests }) {
     }
   };
 
+  const testFunc = (e) => {
+    const obj = document.getElementById('overlay');
+    obj.innerHTML = `<div>
+    <span className="span-text">List 1</span>
+    <span className="span-text">List 2</span>
+    <span className="span-text">List 3</span>
+    </div>`;
+  };
+
   useEffect(() => {
     try {
       const array = guests && guests.length > 0 && [...guests];
@@ -195,6 +204,13 @@ export default function Guests({ guests, setGuests }) {
         saveGuest={saveGuest}
         saveModalFunction={saveModalFunction}
       />
+      <h2
+        onClick={(e) => {
+          testFunc(e);
+        }}
+      >
+        TEST BUTTON
+      </h2>
       <div className="flex-column gap-20" style={{ width: '100%' }}>
         <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
           <div className="input-alt">
