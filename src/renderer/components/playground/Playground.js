@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useAdvancedAlert from 'renderer/hooks/useAdvancedAlert';
+import useMouseOver from 'renderer/hooks/useMouseOver';
 import useTooltip from 'renderer/hooks/useTooltip';
 import SelectInput from '../custom/SelectInput';
 
@@ -48,13 +49,12 @@ export default function Playground() {
         </div>
         {/* TOOLTIP */}
         <div className="flex-column gap-5">
-          <span className="span-text">TOOLTIP TEST</span>
+          <span className="span-text">TOOLTIP TEST // still a buggy mess</span>
           <div className="flex-inline gap-5">
             <button
               className="button-confirm"
               onMouseEnter={(e) => {
                 useTooltip(e, 'Tooltip executed perfectly');
-                // console.log(e.currentTarget.);
               }}
             >
               Hover to see
@@ -116,6 +116,55 @@ export default function Playground() {
             >
               Show Alert
             </button>
+          </div>
+        </div>
+        {/* MOUSE TOOLTIP (HOVER TO TRY) */}
+        <div className="flex-column gap-5">
+          <span className="span-text">
+            MOUSE TOOLTIP DEFAULT (HOVER TO TRY)
+          </span>
+          <div
+            id="mouseOverlay"
+            className="container"
+            onMouseOver={(e) =>
+              useMouseOver(e, 'Insert tooltip message', 'right', true)
+            }
+            onMouseMove={(e) =>
+              useMouseOver(e, 'Insert tooltip message', 'right', true)
+            }
+            style={{ height: 150 }}
+          >
+            <div id="mouseTooltip"></div>
+          </div>
+          <span className="span-text">MOUSE TOOLTIP CENTER (HOVER TO TRY)</span>
+          <div
+            id="mouseOverlay"
+            className="container"
+            onMouseOver={(e) =>
+              useMouseOver(e, 'Insert tooltip message', 'center', true)
+            }
+            onMouseMove={(e) =>
+              useMouseOver(e, 'Insert tooltip message', 'center', true)
+            }
+            style={{ height: 150 }}
+          >
+            <div id="mouseTooltip"></div>
+          </div>
+          <span className="span-text">
+            MOUSE TOOLTIP REVERSED (HOVER TO TRY)
+          </span>
+          <div
+            id="mouseOverlay"
+            className="container"
+            onMouseOver={(e) =>
+              useMouseOver(e, 'Insert tooltip message', 'left', true)
+            }
+            onMouseMove={(e) =>
+              useMouseOver(e, 'Insert tooltip message', 'left', true)
+            }
+            style={{ height: 150 }}
+          >
+            <div id="mouseTooltip"></div>
           </div>
         </div>
       </div>
