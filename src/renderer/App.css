@@ -160,18 +160,18 @@ body.dark-layout .app-modal-content {
   display: block;
   isolation: isolate;
   position: absolute;
-  background-color: rgba(240, 240, 240);
+  background-color: rgba(255, 255, 255);
   filter: drop-shadow(0 5px 5px rgba(30, 30, 30, 0.15));
   padding: 5px 10px;
   border-radius: 10px;
   transform: translateX(-50%) translateY(calc(-100% - 10px));
   animation-name: tooltip;
   animation-duration: 350ms;
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 0.86rem;
   pointer-events: none;
   /* white-space: ; */
-  color: rgba(30, 30, 30, 0.75);
+  color: rgba(30, 30, 30, 0.7);
   max-width: 450px;
   width: max-content;
   text-align: center;
@@ -446,6 +446,29 @@ body.dark-layout .button-grey-alt:hover {
   white-space: nowrap;
   padding-left: 0;
   padding-right: 0;
+}
+.button-primary {
+  color: white;
+  background-color: rgba(0, 117, 255);
+}
+.button-primary:hover {
+  background-color: rgba(0, 87, 215);
+  color: white;
+}
+.button-success {
+  background-color: rgb(0, 255, 85);
+  color: rgba(30, 30, 30);
+}
+.button-success:hover {
+  background-color: rgb(0, 205, 5);
+  color: rgba(30, 30, 30);
+}
+.button-danger {
+  background-color: rgba(255, 20, 50);
+  color: white;
+}
+.button-danger:hover {
+  background-color: rgba(200, 10, 40);
 }
 
 .container {
@@ -800,5 +823,87 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
   100% {
     opacity: 1;
     pointer-events: unset;
+  }
+}
+
+.advanced-alert {
+  position: fixed;
+  background-color: rgba(255, 255, 255);
+  box-shadow: 0 3px 5px 1px rgba(30, 30, 30, 0.15);
+  left: 50%;
+  top: -125px;
+  padding: 5px 10px 5px 5px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  transform: translateX(-50%);
+  animation-name: advanced-alert;
+  animation-duration: 9000ms;
+  max-width: 450px;
+  width: max-content;
+}
+.advanced-alert img {
+  height: 25px;
+  width: 25px;
+}
+.advanced-alert span.span-text {
+  font-weight: bold;
+  white-space: nowrap;
+}
+.advanced-alert.alert-primary {
+  background-color: rgba(0, 117, 255);
+}
+.advanced-alert.alert-success {
+  background-color: rgba(0, 255, 85);
+}
+.advanced-alert.alert-success span.span-text {
+  color: rgba(30, 30, 30);
+  font-weight: bolder;
+}
+.advanced-alert.alert-success img {
+  padding: 4px;
+}
+.advanced-alert.alert-danger {
+  background-color: rgba(255, 20, 50);
+}
+.advanced-alert.alert-primary span.span-text,
+.advanced-alert.alert-danger span.span-text {
+  color: rgba(240, 240, 240);
+}
+@keyframes advanced-alert {
+  0% {
+    top: -125%;
+    max-width: 35px;
+  }
+  10% {
+    top: 40px;
+  }
+  12% {
+    top: 25px;
+    max-width: 35px;
+  }
+  25% {
+    max-width: 450px;
+  }
+  43% {
+    max-width: 450px;
+  }
+  50% {
+    max-width: 35px;
+    top: 25px;
+  }
+  52% {
+    top: 40px;
+  }
+  62% {
+    top: -125%;
+  }
+  75% {
+  }
+  100% {
+    max-width: 35px;
   }
 }

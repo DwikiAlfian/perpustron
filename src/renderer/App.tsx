@@ -9,10 +9,10 @@ import Navbar from './components/navbar/Navbar';
 import Books from './components/books/Books';
 import useLocalStorage from './hooks/useLocalStorage';
 import Guests from './components/guests/Guests';
+import Playground from './components/playground/Playground';
 
 // CSS Import
 import './App.css';
-import Playground from './components/playground/Playground';
 
 const Container = () => {
   // Data State
@@ -96,6 +96,7 @@ export default function App() {
     <Router>
       <div id="overlay">
         <div id="tooltip"></div>
+        <div id="advancedAlert"></div>
         <div id="otheroverlay"></div>
       </div>
       <Navbar />

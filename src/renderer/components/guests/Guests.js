@@ -136,7 +136,7 @@ export default function Guests({ guests, setGuests }) {
       desc: desc,
     });
     // Custom Function to Call Status
-    useStatus('success', 'Updated Succesfully');
+    useStatus('success', 'Guest Updated');
     setGuests(array);
     setCurrentId('');
     setCurrentIndex('');

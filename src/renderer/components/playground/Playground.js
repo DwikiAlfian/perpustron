@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import useAdvancedAlert from 'renderer/hooks/useAdvancedAlert';
 import useTooltip from 'renderer/hooks/useTooltip';
 import SelectInput from '../custom/SelectInput';
 
 export default function Playground() {
   const [category, setCategory] = useState();
+
+  const [primaryAlert, setPrimaryAlert] = useState();
+  const [successAlert, setSuccessAlert] = useState();
+  const [dangerAlert, setDangerAlert] = useState();
 
   return (
     <>
@@ -64,6 +69,52 @@ export default function Playground() {
               }}
             >
               TEST
+            </button>
+          </div>
+        </div>
+        {/* ADVANCED ALERT */}
+        <div className="flex-column gap-5">
+          <span className="span-text">ADVANCED ALERT</span>
+          <div className="flex-inline gap-10">
+            <input
+              className="input"
+              placeholder="Primary Alert..."
+              onChange={(e) => setPrimaryAlert(e.target.value)}
+              value={primaryAlert}
+            />
+            <button
+              className="button-primary"
+              onClick={() => useAdvancedAlert('primary', primaryAlert)}
+            >
+              Show Alert
+            </button>
+          </div>
+          <div className="flex-inline gap-10">
+            <input
+              className="input"
+              placeholder="Success Alert..."
+              onChange={(e) => setSuccessAlert(e.target.value)}
+              value={successAlert}
+            />
+            <button
+              className="button-success"
+              onClick={() => useAdvancedAlert('success', successAlert)}
+            >
+              Show Alert
+            </button>
+          </div>
+          <div className="flex-inline gap-10">
+            <input
+              className="input"
+              placeholder="Danger Alert..."
+              onChange={(e) => setDangerAlert(e.target.value)}
+              value={dangerAlert}
+            />
+            <button
+              className="button-danger"
+              onClick={() => useAdvancedAlert('danger', dangerAlert)}
+            >
+              Show Alert
             </button>
           </div>
         </div>
