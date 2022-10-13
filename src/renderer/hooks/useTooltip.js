@@ -2,24 +2,19 @@ import React, { useEffect } from 'react';
 import useOverlay from './useOverlay';
 
 export default function useTooltip(e, text) {
-  console.log(e.currentTarget.onmouseenter);
-  useOverlay(
-    `
-            <div class="tooltip" style="top: ${
-              e?.currentTarget?.offsetTop
-            }px; left: ${
-      e?.currentTarget?.offsetLeft + e?.currentTarget?.clientWidth / 2
-    }px;">
-                ${text}
-            </div>
-        `,
-    true,
-    0
-  );
+  const words = `
+  <div class="tooltip" style="top: ${e?.currentTarget?.offsetTop}px; left: ${
+    e?.currentTarget?.offsetLeft + e?.currentTarget?.clientWidth / 2
+  }px;">
+      ${text}
+  </div>
+`;
+  const theTimeout = setTimeout(() => {
+    useOverlay(words, 'tooltip', true);
+  }, 800);
   e.currentTarget.onmouseleave = () => {
-    setTimeout(() => {
-      useOverlay('', false, 0);
-    }, 0);
+    clearTimeout(theTimeout);
+    useOverlay('', 'tooltip', false);
   };
-  return <div>useTooltip</div>;
+  return;
 }

@@ -2,6 +2,7 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useEffect, useState } from 'react';
+import { GoBeaker } from 'react-icons/go';
 
 // Import Components
 import Navbar from './components/navbar/Navbar';
@@ -11,6 +12,7 @@ import Guests from './components/guests/Guests';
 
 // CSS Import
 import './App.css';
+import Playground from './components/playground/Playground';
 
 const Container = () => {
   // Data State
@@ -45,6 +47,14 @@ const Container = () => {
             <Tab>Guests</Tab>
             <Tab>Books</Tab>
             <Tab>Category</Tab>
+            <Tab>
+              <div className="flex-inline gap-10">
+                Playground
+                <span className="span-pill">
+                  <GoBeaker size={12} />
+                </span>
+              </div>
+            </Tab>
             <Tab>About</Tab>
           </TabList>
           <TabPanel>
@@ -56,6 +66,11 @@ const Container = () => {
           <TabPanel>
             <div className="fade-fly-in">
               <h3>Still in Development</h3>
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="fade-fly-in" style={{ width: '100%' }}>
+              <Playground />
             </div>
           </TabPanel>
           <TabPanel>
@@ -79,7 +94,10 @@ const Container = () => {
 export default function App() {
   return (
     <Router>
-      <div id="overlay" style={{ backgroundColor: 'white' }}></div>
+      <div id="overlay">
+        <div id="tooltip"></div>
+        <div id="otheroverlay"></div>
+      </div>
       <Navbar />
       <Routes>
         <Route path="/" element={<Container />} />

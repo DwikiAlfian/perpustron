@@ -6,6 +6,7 @@ import useStatus from 'renderer/hooks/useStatus';
 import AddBookModal from './AddBookModal';
 import DataLists from './DataLists';
 import EditBookModal from './EditBookModal';
+import useTooltip from 'renderer/hooks/useTooltip';
 
 export default function Books({ books, setBooks }) {
   const [currentId, setCurrentId] = useState();
@@ -246,6 +247,9 @@ export default function Books({ books, setBooks }) {
             className={`button-grey-alt ${search ? 'button-hide' : ''}`}
             onClick={() => {
               modalFunction();
+            }}
+            onMouseEnter={(e) => {
+              useTooltip(e, 'Add new book to lists');
             }}
           >
             <RiBook2Fill size={20} />

@@ -8,7 +8,6 @@ import EditGuestsModal from './EditGuestsModal';
 import DataLists from './DataLists';
 import useOverlay from 'renderer/hooks/useOverlay';
 import useTooltip from 'renderer/hooks/useTooltip';
-import SelectInput from '../custom/SelectInput';
 
 export default function Guests({ guests, setGuests }) {
   // Input & State
@@ -223,23 +222,6 @@ export default function Guests({ guests, setGuests }) {
           </button>
         </div>
         <div className="container">
-          <SelectInput
-            options={[
-              {
-                value: '1',
-                display: 'Fantasy',
-              },
-              {
-                value: '2',
-                display: 'Fable',
-              },
-              {
-                value: '3',
-                display: 'Novel',
-              },
-            ]}
-            selectedOption="1"
-          />
           <div className="container-content fade-fly-in">
             <div className="book-list">
               {!search && guests ? (

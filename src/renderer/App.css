@@ -144,24 +144,37 @@ body.dark-layout .app-modal-content {
 }
 #overlay {
   position: absolute;
+  top: 0;
+  left: 0;
+  isolation: isolate;
   z-index: 1500;
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+}
+#overlay #tooltip {
+  height: 100%;
+  width: 100%;
 }
 .tooltip {
   display: block;
   isolation: isolate;
-  position: fixed;
+  position: absolute;
   background-color: rgba(240, 240, 240);
   filter: drop-shadow(0 5px 5px rgba(30, 30, 30, 0.15));
   padding: 5px 10px;
   border-radius: 10px;
-  transform: translateY(calc(-50% - 25px)) translateX(-50%);
+  transform: translateX(-50%) translateY(calc(-100% - 10px));
   animation-name: tooltip;
   animation-duration: 350ms;
   font-weight: bold;
   font-size: 0.86rem;
   pointer-events: none;
-  white-space: nowrap;
+  /* white-space: ; */
   color: rgba(30, 30, 30, 0.75);
+  max-width: 450px;
+  width: max-content;
+  text-align: center;
 }
 .tooltip::after {
   content: '';
@@ -182,14 +195,14 @@ body.dark-layout .tooltip {
 @keyframes tooltip {
   0% {
     opacity: 0;
-    transform: translateY(calc(-50% - 15px)) translateX(-50%);
+    transform: translateX(-50%) translateY(calc(-100% - 3px));
   }
   90% {
-    transform: translateY(calc(-50% - 25px)) translateX(-50%);
+    transform: translateX(-50%) translateY(calc(-100% - 10px));
   }
   100% {
     opacity: 1;
-    transform: translateY(calc(-50% - 25px)) translateX(-50%);
+    transform: translateX(-50%) translateY(calc(-100% - 10px));
   }
 }
 
@@ -555,11 +568,11 @@ body.dark-layout .input-alt svg {
   color: rgba(30, 30, 30, 0.5);
   font-weight: bold;
   transition: background-color 150ms, color 150ms;
+  border-radius: 7px;
 }
 .select-input .select-list span:hover {
   background-color: rgba(30, 30, 30, 0.05);
   color: rgba(30, 30, 30);
-  border-radius: 7px;
 }
 body.dark-layout .select-input .select-list {
   background-color: rgba(100, 100, 100);
@@ -722,6 +735,14 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
   color: white !important;
   transition: background-color 350ms, color 150ms;
 }
+.react-tabs__tab-list .react-tabs__tab .span-pill {
+  transition: background-color 150ms color 150ms;
+}
+.react-tabs__tab-list .react-tabs__tab--selected .span-pill {
+  background-color: rgba(240, 240, 240);
+  color: rgba(0, 117, 255);
+  transition: background-color 150ms color 150ms;
+}
 .react-tabs__tab-list .react-tabs__tab--selected:hover {
   background-color: rgba(0, 87, 215) !important;
 }
@@ -766,13 +787,18 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
 }
 @keyframes fade-fly-in {
   0% {
+    pointer-events: none;
     transform: translateY(50px);
     opacity: 0;
   }
   40% {
     transform: translateY(0);
   }
+  99% {
+    pointer-events: none;
+  }
   100% {
     opacity: 1;
+    pointer-events: unset;
   }
 }
