@@ -142,6 +142,56 @@ body.dark-layout .app-modal-content {
   background-color: rgba(40, 40, 40);
   box-shadow: 0 0 15px 1px rgba(30, 30, 30, 0.025);
 }
+#overlay {
+  position: absolute;
+  z-index: 1500;
+}
+.tooltip {
+  display: block;
+  isolation: isolate;
+  position: fixed;
+  background-color: rgba(240, 240, 240);
+  filter: drop-shadow(0 5px 5px rgba(30, 30, 30, 0.15));
+  padding: 5px 10px;
+  border-radius: 10px;
+  transform: translateY(calc(-50% - 25px)) translateX(-50%);
+  animation-name: tooltip;
+  animation-duration: 350ms;
+  font-weight: bold;
+  font-size: 0.86rem;
+  pointer-events: none;
+  white-space: nowrap;
+  color: rgba(30, 30, 30, 0.75);
+}
+.tooltip::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(50%) rotateZ(45deg);
+  z-index: -1;
+  background-color: inherit;
+}
+body.dark-layout .tooltip {
+  background-color: rgba(100, 100, 100);
+  filter: drop-shadow(0 5px 5px rgba(30, 30, 30, 0.15));
+  color: rgba(240, 240, 240, 0.75);
+}
+@keyframes tooltip {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(-50% - 15px)) translateX(-50%);
+  }
+  90% {
+    transform: translateY(calc(-50% - 25px)) translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(calc(-50% - 25px)) translateX(-50%);
+  }
+}
 
 /* ======== */
 /* Stylings */
@@ -455,6 +505,71 @@ body.dark-layout .input-alt .input {
 }
 body.dark-layout .input-alt svg {
   color: rgba(240, 240, 240, 0.5);
+}
+.select-input {
+  position: relative;
+  cursor: pointer;
+}
+.select-input input {
+  pointer-events: none;
+}
+.select-input:hover input {
+  box-shadow: 0 0 0 2px rgba(0, 117, 255, 0.25) inset;
+}
+.select-input:focus .select-list {
+  display: flex;
+}
+.select-input:focus input {
+  box-shadow: 0 0 0 2px rgba(0, 117, 255) inset;
+}
+.select-input .select-list {
+  cursor: default;
+  display: none;
+  position: absolute;
+  width: 100%;
+  isolation: isolate;
+  top: calc(100% + 15px);
+  background-color: rgba(240, 240, 240);
+  padding: 5px;
+  border-radius: 7px;
+  gap: 5px;
+  flex-direction: column;
+  /* box-shadow: 0 0 0 2px rgba(0, 117, 255) inset; */
+  filter: drop-shadow(0 -2px 5px rgba(30, 30, 30, 0.075));
+}
+.select-input .select-list::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: 0;
+  left: 50%;
+  background-color: inherit;
+  transform: translate(-50%, -50%) rotateZ(45deg);
+}
+.select-input .select-list span {
+  cursor: pointer;
+  font-size: 0.86rem;
+  padding: 10px 15px;
+  color: rgba(30, 30, 30, 0.5);
+  font-weight: bold;
+  transition: background-color 150ms, color 150ms;
+}
+.select-input .select-list span:hover {
+  background-color: rgba(30, 30, 30, 0.05);
+  color: rgba(30, 30, 30);
+  border-radius: 7px;
+}
+body.dark-layout .select-input .select-list {
+  background-color: rgba(100, 100, 100);
+}
+body.dark-layout .select-input .select-list span {
+  color: rgba(240, 240, 240, 0.5);
+}
+body.dark-layout .select-input .select-list span:hover {
+  color: rgba(240, 240, 240);
+  background-color: rgba(240, 240, 240, 0.1);
 }
 
 .book-list {

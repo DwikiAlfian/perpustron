@@ -6,6 +6,9 @@ import useStatus from 'renderer/hooks/useStatus';
 import AddGuestsModal from './AddGuestsModal';
 import EditGuestsModal from './EditGuestsModal';
 import DataLists from './DataLists';
+import useOverlay from 'renderer/hooks/useOverlay';
+import useTooltip from 'renderer/hooks/useTooltip';
+import SelectInput from '../custom/SelectInput';
 
 export default function Guests({ guests, setGuests }) {
   // Input & State
@@ -152,15 +155,6 @@ export default function Guests({ guests, setGuests }) {
     }
   };
 
-  const testFunc = (e) => {
-    const obj = document.getElementById('overlay');
-    obj.innerHTML = `<div>
-    <span className="span-text">List 1</span>
-    <span className="span-text">List 2</span>
-    <span className="span-text">List 3</span>
-    </div>`;
-  };
-
   useEffect(() => {
     try {
       const array = guests && guests.length > 0 && [...guests];
@@ -204,13 +198,6 @@ export default function Guests({ guests, setGuests }) {
         saveGuest={saveGuest}
         saveModalFunction={saveModalFunction}
       />
-      <h2
-        onClick={(e) => {
-          testFunc(e);
-        }}
-      >
-        TEST BUTTON
-      </h2>
       <div className="flex-column gap-20" style={{ width: '100%' }}>
         <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
           <div className="input-alt">
@@ -227,12 +214,32 @@ export default function Guests({ guests, setGuests }) {
             onClick={() => {
               modalFunction();
             }}
+            onMouseEnter={(e) => {
+              useTooltip(e, 'Add new guests');
+            }}
           >
             <BsFillPersonPlusFill size={20} />
             Add Guest
           </button>
         </div>
         <div className="container">
+          <SelectInput
+            options={[
+              {
+                value: '1',
+                display: 'Fantasy',
+              },
+              {
+                value: '2',
+                display: 'Fable',
+              },
+              {
+                value: '3',
+                display: 'Novel',
+              },
+            ]}
+            selectedOption="1"
+          />
           <div className="container-content fade-fly-in">
             <div className="book-list">
               {!search && guests ? (
