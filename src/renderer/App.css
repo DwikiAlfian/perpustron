@@ -374,6 +374,10 @@ body.dark-layout .icon.icon-status.icon-status-danger {
 body.dark-layout .span-text {
   color: rgba(240, 240, 240, 0.5);
 }
+.span-text.span-text-alt {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
 .span-pill {
   display: block;
   background-color: rgba(0, 117, 255);
@@ -858,7 +862,7 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   overflow: hidden;
   transform: translateX(-50%);
   animation-name: advanced-alert;
@@ -867,12 +871,13 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
   width: max-content;
 }
 .advanced-alert img {
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
 }
 .advanced-alert span.span-text {
   font-weight: bold;
   white-space: nowrap;
+  padding-right: 10px;
 }
 .advanced-alert.alert-primary {
   background-color: rgba(0, 117, 255);
@@ -897,23 +902,23 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
 @keyframes advanced-alert {
   0% {
     top: -125%;
-    max-width: 35px;
+    max-width: 40px;
   }
-  10% {
+  7% {
     top: 40px;
   }
-  12% {
+  9% {
     top: 25px;
-    max-width: 35px;
+    max-width: 40px;
   }
-  25% {
+  24% {
     max-width: 450px;
   }
   43% {
     max-width: 450px;
   }
   50% {
-    max-width: 35px;
+    max-width: 40px;
     top: 25px;
   }
   52% {
@@ -925,6 +930,6 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
   75% {
   }
   100% {
-    max-width: 35px;
+    max-width: 40px;
   }
 }

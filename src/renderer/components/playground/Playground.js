@@ -9,11 +9,12 @@ export default function Playground() {
 
   const [primaryAlert, setPrimaryAlert] = useState();
   const [successAlert, setSuccessAlert] = useState();
+  const [successSub, setSuccessSub] = useState();
   const [dangerAlert, setDangerAlert] = useState();
 
   return (
     <>
-      <div className="container flex-column gap-20">
+      <div id="testingGround" className="container flex-column gap-20">
         <div className="flex-column gap-5">
           <h3>About Playground</h3>
           <span className="span-text">
@@ -96,9 +97,17 @@ export default function Playground() {
               onChange={(e) => setSuccessAlert(e.target.value)}
               value={successAlert}
             />
+            <input
+              className="input"
+              placeholder="Success Sub Message..."
+              onChange={(e) => setSuccessSub(e.target.value)}
+              value={successSub}
+            />
             <button
               className="button-success"
-              onClick={() => useAdvancedAlert('success', successAlert)}
+              onClick={() =>
+                useAdvancedAlert('success', successAlert, successSub)
+              }
             >
               Show Alert
             </button>

@@ -82,7 +82,7 @@ export default function DataLists({
                 flexDirection: 'column',
               }}
             >
-              <h4>No datas is written!</h4>
+              <h4>No data has been written</h4>
               <span className="span-text">Try add list a data</span>
             </div>
           </>
