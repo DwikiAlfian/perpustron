@@ -8,6 +8,7 @@ import EditGuestsModal from './EditGuestsModal';
 import DataLists from './DataLists';
 import useOverlay from 'renderer/hooks/useOverlay';
 import useTooltip from 'renderer/hooks/useTooltip';
+import useAdvancedAlert from 'renderer/hooks/useAdvancedAlert';
 
 export default function Guests({ guests, setGuests }) {
   // Input & State
@@ -109,7 +110,8 @@ export default function Guests({ guests, setGuests }) {
           ];
         }
       });
-      useStatus('primary', 'Guest Added');
+      // useStatus('primary', 'Guest Added');
+      useAdvancedAlert('primary', 'Guest Added');
       modalFunction();
     }
   };
@@ -121,7 +123,8 @@ export default function Guests({ guests, setGuests }) {
     const array = [...guests];
     array?.splice(num, 1);
     setGuests(array);
-    useStatus('danger', 'Successfully Deleted');
+    // useStatus('danger', 'Successfully Deleted');
+    useAdvancedAlert('danger', 'Guest Deleted');
   };
 
   // ================
@@ -136,7 +139,8 @@ export default function Guests({ guests, setGuests }) {
       desc: desc,
     });
     // Custom Function to Call Status
-    useStatus('success', 'Guest Updated');
+    // useStatus('success', 'Guest Updated');
+    useAdvancedAlert('success', 'Guest Updated');
     setGuests(array);
     setCurrentId('');
     setCurrentIndex('');
@@ -197,7 +201,7 @@ export default function Guests({ guests, setGuests }) {
         saveGuest={saveGuest}
         saveModalFunction={saveModalFunction}
       />
-      <div className="flex-column gap-20" style={{ width: '100%' }}>
+      <div className="flex-column gap-15" style={{ width: '100%' }}>
         <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
           <div className="input-alt">
             <BsSearch size={12} />
