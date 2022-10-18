@@ -130,12 +130,10 @@ export default function Navbar() {
 
   return (
     <>
+      <CloseModalConfirmation />
       <div className="app-navbar">
-        <CloseModalConfirmation />
-        <div>
-          <h4 style={{ marginLeft: 7 }}>.perpustakaan</h4>
-        </div>
-        <div className="flex-inline gap-5">
+        <div>{/* <h4 style={{ marginLeft: 7 }}>.perpustakaan</h4> */}</div>
+        <div className="flex-inline">
           <div className="icon icon-status icon-status-success">
             <BsPencilSquare size={16} />
             <span id="successtext" className="span-text">
@@ -178,7 +176,7 @@ export default function Navbar() {
               minimizeWindow();
             }}
           >
-            <HiOutlineMinusSm size={18} />
+            <HiOutlineMinusSm size={16} />
           </div>
           <div
             className="icon"
@@ -186,15 +184,15 @@ export default function Navbar() {
               maximizeWindow();
             }}
           >
-            {isMaximize ? <BiWindows size={18} /> : <BiWindow size={18} />}
+            {isMaximize ? <BiWindows size={12} /> : <BiWindow size={12} />}
           </div>
           <div
-            className="icon"
+            className="icon icon-close"
             onClick={() => {
               closeFunction();
             }}
           >
-            <BsX size={24} />
+            <BsX size={20} />
           </div>
         </div>
       </div>

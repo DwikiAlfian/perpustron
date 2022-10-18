@@ -233,7 +233,7 @@ export default function Books({ books, setBooks }) {
         saveBook={saveBook}
         saveModalFunction={saveModalFunction}
       />
-      <div className="flex-column gap-20" style={{ width: '100%' }}>
+      <div className="flex-column gap-15" style={{ width: '100%' }}>
         <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
           <div className="input-alt">
             <BsSearch size={12} />
