@@ -2,7 +2,7 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useEffect, useState } from 'react';
-import { GoBeaker } from 'react-icons/go';
+import { GoBeaker, GoBook, GoPerson } from 'react-icons/go';
 
 // Import Components
 import Navbar from './components/navbar/Navbar';
@@ -45,16 +45,29 @@ const Container = () => {
         <Tabs>
           <TabList>
             <h4 style={{ margin: '5px 0 25px 0' }}>.perpustakaan</h4>
-            <span className="span-text span-text-bold">LABEL</span>
-            <Tab>Guests</Tab>
-            <Tab>Books</Tab>
-            <Tab>Category</Tab>
+            {/* <span className="span-text span-text-bold">LABEL</span> */}
             <Tab>
               <div className="flex-inline gap-10">
-                Playground
                 <span className="span-pill">
-                  <GoBeaker size={12} />
+                  <GoPerson size={10} />
                 </span>
+                Guests
+              </div>
+            </Tab>
+            <Tab>
+              <div className="flex-inline gap-10">
+                <span className="span-pill">
+                  <GoBook size={10} />
+                </span>
+                Books
+              </div>
+            </Tab>
+            <Tab>
+              <div className="flex-inline gap-10">
+                <span className="span-pill">
+                  <GoBeaker size={10} />
+                </span>
+                Playground
               </div>
             </Tab>
             <Tab>About</Tab>
@@ -64,11 +77,6 @@ const Container = () => {
           </TabPanel>
           <TabPanel>
             <Books books={books} setBooks={setBooks} />
-          </TabPanel>
-          <TabPanel>
-            <div className="fade-fly-in">
-              <h3>Still in Development</h3>
-            </div>
           </TabPanel>
           <TabPanel>
             <div className="fade-fly-in" style={{ width: '100%' }}>
