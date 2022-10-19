@@ -460,6 +460,15 @@ button:hover {
   color: white;
   background-color: rgba(0, 87, 215);
 }
+.button-danger-trans {
+  color: rgba(255, 20, 50);
+  background-color: rgba(255, 20, 50, 0.25);
+}
+.button-danger-trans:hover {
+  color: white;
+  /* color: rgba(255, 20, 50); */
+  background-color: rgba(255, 20, 50);
+}
 body.dark-layout .button-confirm-trans {
   color: rgba(30, 147, 255);
 }
@@ -671,7 +680,7 @@ body.dark-layout .select-input .select-list span:hover {
   flex-direction: column;
   align-items: flex-start;
   background-color: rgba(245, 245, 245);
-  padding: 15px 70px 15px 50px;
+  padding: 15px 15px 15px 50px;
   border-radius: 7px;
   transition: background-color 150ms, box-shadow 150ms, transform 150ms;
   position: relative;
@@ -714,11 +723,34 @@ body.dark-layout .select-input .select-list span:hover {
   transform: translateY(-50%) rotateZ(180deg);
   color: rgba(30, 30, 30, 0.75);
 }
-.book-list .book-list-content > button {
+.book-list .book-list-content .book-buttons {
+  display: flex;
+  flex-direction: row;
   position: absolute;
-  right: 10px;
-  top: 10px;
-  height: calc(100% - 20px);
+  right: 15px;
+  top: 50%;
+  height: 45px;
+  gap: 10px;
+  transform: translateY(-50%);
+  transition: top 750ms ease-in-out, transform 750ms ease-in-out;
+}
+.book-list .book-list-content.book-list-open .book-buttons {
+  top: 15px;
+  transform: translateY(0);
+  transition: top 50ms, transform 50ms;
+}
+.book-list .book-list-content .book-buttons .button-confirm-trans {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 350ms;
+}
+.book-list
+  .book-list-content.book-list-open
+  .book-buttons
+  .button-confirm-trans {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
 }
 body.dark-layout .book-list .book-list-content .book-chevron-icon {
   color: rgba(240, 240, 240, 0.35);
