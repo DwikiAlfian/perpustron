@@ -39,32 +39,35 @@ export default function DataLists({
                     <div className="flex-column gap-5">
                       <span className="span-text">Purpose : {data?.desc}</span>
                     </div>
-                    <button
-                      className="button-confirm-trans"
-                      onClick={() => {
-                        setCurrentData({
-                          index: index,
-                          id: data?.id,
-                          name: data?.name,
-                          title: data?.title,
-                          desc: data?.desc,
-                        });
-                      }}
-                    >
-                      <RiEdit2Fill size="14" />
-                      Edit Data
-                    </button>
                   </div>
                 </div>
-                <button
-                  className="button-confirm-trans"
-                  onClick={(e) => {
-                    deleteGuest(index);
-                    e.stopPropagation();
-                  }}
-                >
-                  <HiOutlineTrash size="14" />
-                </button>
+                <div className="book-buttons">
+                  <button
+                    className="button-confirm-trans"
+                    onClick={(e) => {
+                      setCurrentData({
+                        index: index,
+                        id: data?.id,
+                        name: data?.name,
+                        title: data?.title,
+                        desc: data?.desc,
+                      });
+                      e.stopPropagation();
+                    }}
+                  >
+                    <RiEdit2Fill size="14" />
+                    Edit Data
+                  </button>
+                  <button
+                    className="button-danger-trans"
+                    onClick={(e) => {
+                      deleteGuest(index);
+                      e.stopPropagation();
+                    }}
+                  >
+                    <HiOutlineTrash size="14" />
+                  </button>
+                </div>
               </div>
             </>
           );

@@ -26,7 +26,9 @@ export default function DataLists({
               >
                 <HiChevronDown className="book-chevron-icon" size={20} />
                 <h4>{book?.title}</h4>
-                <span className="span-text">{book?.author}</span>
+                <span className="span-text" style={{ marginTop: 10 }}>
+                  {book?.author}
+                </span>
                 <div
                   className="container flex-column gap-5"
                   onClick={(e) => {
@@ -45,36 +47,39 @@ export default function DataLists({
                       <span className="span-text">Stock : {book?.stock}</span>
                       <span className="span-text">Rack : {book?.rack}</span>
                     </div>
-                    <button
-                      className="button-confirm-trans"
-                      onClick={() => {
-                        setCurrentData({
-                          index: index,
-                          id: book?.id,
-                          title: book?.title,
-                          author: book?.author,
-                          category: book?.category,
-                          distributor: book?.distributor,
-                          year: book?.year,
-                          stock: book?.stock,
-                          rack: book?.rack,
-                        });
-                      }}
-                    >
-                      <RiEdit2Fill size="14" />
-                      Edit Data
-                    </button>
                   </div>
                 </div>
-                <button
-                  className="button-confirm-trans"
-                  onClick={(e) => {
-                    deleteBook(index);
-                    e.stopPropagation();
-                  }}
-                >
-                  <HiOutlineTrash size="14" />
-                </button>
+                <div className="book-buttons">
+                  <button
+                    className="button-confirm-trans"
+                    onClick={(e) => {
+                      setCurrentData({
+                        index: index,
+                        id: book?.id,
+                        title: book?.title,
+                        author: book?.author,
+                        category: book?.category,
+                        distributor: book?.distributor,
+                        year: book?.year,
+                        stock: book?.stock,
+                        rack: book?.rack,
+                      });
+                      e.stopPropagation();
+                    }}
+                  >
+                    <RiEdit2Fill size="14" />
+                    Edit Data
+                  </button>
+                  <button
+                    className="button-danger-trans"
+                    onClick={(e) => {
+                      deleteBook(index);
+                      e.stopPropagation();
+                    }}
+                  >
+                    <HiOutlineTrash size="14" />
+                  </button>
+                </div>
               </div>
             </>
           );
