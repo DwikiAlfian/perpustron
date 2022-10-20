@@ -258,7 +258,7 @@ export default function Books({ books, setBooks }) {
         </div>
         <div className="container">
           <div className="container-content" style={{ height: '100%' }}>
-            <div className="book-list">
+            <div className="book-list book-list-alt">
               {!search && books ? (
                 <DataLists
                   books={books}

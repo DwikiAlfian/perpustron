@@ -88,9 +88,7 @@ body.dark-layout ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(245, 245, 245);
   height: 100%;
   width: 100%;
-  border-radius: 3px;
   overflow: hidden;
-  /* padding: 90px 20px 20px 20px; */
   box-shadow: 0 0 5px 1px rgba(30, 30, 30, 0.25);
 }
 body.dark-layout .app-container {
@@ -102,16 +100,13 @@ body.dark-layout .app-container {
   z-index: 100;
   width: calc(100% - 210px);
   right: 0;
-  /* padding: 20px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: rgba(230, 230, 230); */
   border-radius: 15px 15px 0 0;
   -webkit-app-region: drag;
 }
 body.dark-layout .app-navbar {
-  /* background-color: rgba(240, 240, 240, 0.07); */
 }
 .app-modal {
   position: fixed;
@@ -676,6 +671,13 @@ body.dark-layout .select-input .select-list span:hover {
   gap: 15px;
   height: 100%;
 }
+.book-list.book-list-alt {
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: max-content;
+}
 .book-list .book-list-content {
   display: flex;
   flex-direction: column;
@@ -687,6 +689,12 @@ body.dark-layout .select-input .select-list span:hover {
   position: relative;
   cursor: pointer;
   box-shadow: 0 25px 5px -20px rgba(30, 30, 30, 0.075);
+}
+.book-list.book-list-alt .book-list-content {
+  /* flex: auto; */
+  min-height: 150px;
+  /* height: 150px; */
+  max-height: 250px;
 }
 .book-list .book-list-content .container {
   /* display: none; */
@@ -727,12 +735,12 @@ body.dark-layout .select-input .select-list span:hover {
 .book-list .book-list-content .book-buttons {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  right: 15px;
-  top: 50%;
+  /* position: absolute; */
+  /* right: 15px; */
+  /* top: 50%; */
   height: 45px;
   gap: 10px;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   transition: top 750ms ease-in-out, transform 750ms ease-in-out;
 }
 .book-list .book-list-content.book-list-open .book-buttons {
@@ -895,6 +903,11 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
 }
 .react-tabs__tab-panel.react-tabs__tab-panel--selected {
   display: flex;
+  width: 100%;
+}
+
+/* Full Width */
+.fw {
   width: 100%;
 }
 

@@ -33,10 +33,44 @@ export default function DataLists({
                 }}
               >
                 <HiChevronDown className="book-chevron-icon" size={20} />
-                <h4>{data?.name}</h4>
-                <span className="span-pill" style={{ marginTop: 7 }}>
-                  {data?.title}
-                </span>
+                <div
+                  className="flex-inline flex-justify-between"
+                  style={{ width: '100%' }}
+                >
+                  <div className="flex-column flex-align-start">
+                    <h4>{data?.name}</h4>
+                    <span className="span-pill" style={{ marginTop: 7 }}>
+                      {data?.title}
+                    </span>
+                  </div>
+                  <div className="book-buttons">
+                    <button
+                      className="button-confirm-trans"
+                      onClick={(e) => {
+                        setCurrentData({
+                          index: index,
+                          id: data?.id,
+                          name: data?.name,
+                          title: data?.title,
+                          desc: data?.desc,
+                        });
+                        e.stopPropagation();
+                      }}
+                    >
+                      <RiEdit2Fill size="14" />
+                      Edit Data
+                    </button>
+                    <button
+                      className="button-danger-trans"
+                      onClick={(e) => {
+                        deleteGuest(index);
+                        e.stopPropagation();
+                      }}
+                    >
+                      <HiOutlineTrash size="14" />
+                    </button>
+                  </div>
+                </div>
                 <div
                   className="container flex-column gap-5"
                   onClick={(e) => {
@@ -48,33 +82,6 @@ export default function DataLists({
                       <span className="span-text">Purpose : {data?.desc}</span>
                     </div>
                   </div>
-                </div>
-                <div className="book-buttons">
-                  <button
-                    className="button-confirm-trans"
-                    onClick={(e) => {
-                      setCurrentData({
-                        index: index,
-                        id: data?.id,
-                        name: data?.name,
-                        title: data?.title,
-                        desc: data?.desc,
-                      });
-                      e.stopPropagation();
-                    }}
-                  >
-                    <RiEdit2Fill size="14" />
-                    Edit Data
-                  </button>
-                  <button
-                    className="button-danger-trans"
-                    onClick={(e) => {
-                      deleteGuest(index);
-                      e.stopPropagation();
-                    }}
-                  >
-                    <HiOutlineTrash size="14" />
-                  </button>
                 </div>
               </div>
             </>
