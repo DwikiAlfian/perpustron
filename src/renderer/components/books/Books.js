@@ -257,7 +257,7 @@ export default function Books({ books, setBooks }) {
           </button>
         </div>
         <div className="container">
-          <div className="container-content fade-fly-in">
+          <div className="container-content" style={{ height: '100%' }}>
             <div className="book-list">
               {!search && books ? (
                 <DataLists

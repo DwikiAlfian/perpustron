@@ -6,9 +6,7 @@ export default function useMouseOver(e, text, pos, pg) {
     : document.getElementById('mouseTooltip');
   const words = `
     
-    <div class="mouse-tooltip ${pos}" style="top: ${e?.pageY - 30}px; left: ${
-    e?.pageX
-  }px;">
+    <div class="mouse-tooltip ${pos}" style="top: ${e?.pageY}px; left: ${e?.pageX}px;">
           ${text}
       </div>
 

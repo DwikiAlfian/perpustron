@@ -84,7 +84,7 @@ const createWindow = async () => {
       contextIsolation: false,
     },
     frame: false,
-    transparent: true,
+    // transparent: true,
   });
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));

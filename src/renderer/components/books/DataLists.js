@@ -19,7 +19,7 @@ export default function DataLists({
           return (
             <>
               <div
-                className="book-list-content"
+                className="book-list-content fade-fly-in"
                 onClick={(e) => {
                   openDrawer(e);
                 }}
@@ -90,15 +90,17 @@ export default function DataLists({
             <div
               style={{
                 textAlign: 'center',
-                height: 300,
+                height: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexDirection: 'column',
               }}
             >
-              <h4>No Books is currently stored!</h4>
-              <span className="span-text">Try add new book now</span>
+              <h4 className="fade-fly-in">No Books is currently stored!</h4>
+              <span className="span-text fade-fly-in">
+                Try add new book now
+              </span>
             </div>
           </>
         ))}

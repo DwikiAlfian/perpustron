@@ -226,7 +226,7 @@ export default function Guests({ guests, setGuests }) {
           </button>
         </div>
         <div className="container">
-          <div className="container-content fade-fly-in">
+          <div className="container-content" style={{ height: '100%' }}>
             <div className="book-list">
               {!search && guests ? (
                 <DataLists

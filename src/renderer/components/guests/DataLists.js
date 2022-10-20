@@ -12,14 +12,22 @@ export default function DataLists({
   setCurrentData,
   openDrawer,
 }) {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    setShow(false);
+    setTimeout(() => {
+      setShow(true);
+    }, 50);
+  }, [datas]);
   return (
     <>
       {datas &&
+        show &&
         datas?.map((data, index) => {
           return (
             <>
               <div
-                className="book-list-content"
+                className="book-list-content fade-fly-in"
                 onClick={(e) => {
                   openDrawer(e);
                 }}
@@ -78,15 +86,15 @@ export default function DataLists({
             <div
               style={{
                 textAlign: 'center',
-                height: 300,
+                height: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexDirection: 'column',
               }}
             >
-              <h4>No data has been written</h4>
-              <span className="span-text">Try add list a data</span>
+              <h4 className="fade-fly-in">No data has been written</h4>
+              <span className="span-text fade-fly-in">Try add list a data</span>
             </div>
           </>
         ))}
