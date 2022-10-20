@@ -742,7 +742,7 @@ body.dark-layout .select-input .select-list span:hover {
 .book-list .book-list-content .book-buttons .button-confirm-trans {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 350ms;
+  transition: opacity 350ms, transform 150ms;
 }
 .book-list
   .book-list-content.book-list-open
