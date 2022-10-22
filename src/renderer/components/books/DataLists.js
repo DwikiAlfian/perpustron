@@ -19,19 +19,38 @@ export default function DataLists({
           return (
             <>
               <div
-                className="book-list-content fade-fly-in"
-                onClick={(e) => {
-                  openDrawer(e);
-                }}
+                className="book-list-content book-list-open fade-fly-in"
+                // onClick={(e) => {
+                //   openDrawer(e);
+                // }}
+                style={{ padding: 25 }}
               >
-                <HiChevronDown className="book-chevron-icon" size={20} />
+                {/* <HiChevronDown className="book-chevron-icon" size={20} /> */}
                 <div className="flex-inline flex-justify-between fw">
                   <div className="flex-column flex-align-start">
-                    <h4>{book?.title}</h4>
-                    <span className="span-text" style={{ marginTop: 10 }}>
+                    <h3>{book?.title}</h3>
+                    <span className="span-pill" style={{ marginTop: 5 }}>
                       {book?.author}
                     </span>
                   </div>
+                </div>
+                <div
+                  className="flex-inline flex-align-start flex-justify-between"
+                  style={{ marginTop: 15 }}
+                >
+                  <div className="flex-column gap-5">
+                    <span className="span-text">
+                      Category : {book?.category}
+                    </span>
+                    <span className="span-text">
+                      Distributor : {book?.distributor}
+                    </span>
+                    <span className="span-text">Year : {book?.year}</span>
+                    <span className="span-text">Stock : {book?.stock}</span>
+                    <span className="span-text">Rack : {book?.rack}</span>
+                  </div>
+                </div>
+                <div className="flex-inline flex-justify-end fw">
                   <div className="book-buttons">
                     <button
                       className="button-confirm-trans"
@@ -64,26 +83,6 @@ export default function DataLists({
                     </button>
                   </div>
                 </div>
-                <div
-                  className="container flex-column gap-5"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  <div className="flex-inline flex-align-start flex-justify-between">
-                    <div className="flex-column gap-5">
-                      <span className="span-text">
-                        Category : {book?.category}
-                      </span>
-                      <span className="span-text">
-                        Distributor : {book?.distributor}
-                      </span>
-                      <span className="span-text">Year : {book?.year}</span>
-                      <span className="span-text">Stock : {book?.stock}</span>
-                      <span className="span-text">Rack : {book?.rack}</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </>
           );
@@ -101,10 +100,10 @@ export default function DataLists({
                 flexDirection: 'column',
               }}
             >
-              <h4 className="fade-fly-in">No Books is currently stored!</h4>
+              {/* <h4 className="fade-fly-in">No Books is currently stored!</h4>
               <span className="span-text fade-fly-in">
                 Try add new book now
-              </span>
+              </span> */}
             </div>
           </>
         ))}

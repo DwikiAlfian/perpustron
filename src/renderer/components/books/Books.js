@@ -234,17 +234,20 @@ export default function Books({ books, setBooks }) {
         saveModalFunction={saveModalFunction}
       />
       <div className="flex-column gap-15" style={{ width: '100%' }}>
-        <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
-          <div className="input-alt">
-            <BsSearch size={12} />
-            <input
-              className="input input-alt"
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by title, author, etc..."
-            />
+        <div className="flex-inline flex-justify-between panel-title">
+          <div className="flex-column gap-5">
+            <h2 className="fade-fly-in">Books Lists</h2>
+            <span
+              className="span-text fade-fly-in"
+              style={{ fontSize: '0.7rem' }}
+            >
+              TOTAL BOOKS : {books?.length}
+            </span>
           </div>
           <button
-            className={`button-grey-alt ${search ? 'button-hide' : ''}`}
+            className={`fade-fly-in button-primary ${
+              search ? 'button-hide' : ''
+            }`}
             onClick={() => {
               modalFunction();
             }}
@@ -256,8 +259,18 @@ export default function Books({ books, setBooks }) {
             Add Book
           </button>
         </div>
+        <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
+          <div className="input-alt">
+            <BsSearch size={12} />
+            <input
+              className="input input-alt"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by title, author, etc..."
+            />
+          </div>
+        </div>
         <div className="container">
-          <div className="container-content" style={{ height: '100%' }}>
+          <div className="container-content">
             <div className="book-list book-list-alt">
               {!search && books ? (
                 <DataLists
@@ -274,7 +287,7 @@ export default function Books({ books, setBooks }) {
                   openDrawer={openDrawer}
                 />
               ) : (
-                <h4>No Data to be shown</h4>
+                <h4></h4>
               )}
             </div>
           </div>

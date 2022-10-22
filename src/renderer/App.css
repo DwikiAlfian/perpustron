@@ -234,8 +234,8 @@ body.dark-layout .tooltip {
 /* Stylings */
 /* ======== */
 .icon {
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -374,6 +374,9 @@ body.dark-layout .icon.icon-status.icon-status-danger {
 }
 .icon-close:hover {
   background-color: rgba(255, 20, 50, 0.75);
+}
+.icon-close:hover svg {
+  color: rgba(240, 240, 240);
 }
 body.dark-layout .icon-close:hover {
   background-color: rgba(255, 20, 50, 0.75);
@@ -691,9 +694,11 @@ body.dark-layout .select-input .select-list span:hover {
 }
 .book-list.book-list-alt .book-list-content {
   /* flex: auto; */
-  min-height: 150px;
+  /* min-height: 150px; */
   /* height: 150px; */
-  max-height: 250px;
+  height: 350px;
+  max-height: 450px;
+  justify-content: flex-end;
 }
 .book-list .book-list-content .container {
   /* display: none; */

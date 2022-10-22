@@ -238,7 +238,7 @@ export default function Guests({ guests, setGuests }) {
           </div>
         </div>
         <div className="container">
-          <div className="container-content" style={{ height: '100%' }}>
+          <div className="container-content">
             <div className="book-list">
               {!search && guests ? (
                 <DataLists
