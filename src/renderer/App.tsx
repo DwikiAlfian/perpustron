@@ -106,6 +106,7 @@ export default function App() {
     <Router>
       <div id="overlay">
         <div id="tooltip"></div>
+        <div id="mouseTooltip"></div>
         <div id="advancedAlert"></div>
         <div id="otheroverlay"></div>
       </div>

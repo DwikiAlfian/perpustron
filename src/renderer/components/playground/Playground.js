@@ -158,9 +158,7 @@ export default function Playground() {
               )
             }
             style={{ height: 150 }}
-          >
-            <div id="mouseTooltip"></div>
-          </div>
+          ></div>
           <span className="span-text">CENTER</span>
           <div
             id="mouseOverlay"
@@ -182,9 +180,7 @@ export default function Playground() {
               )
             }
             style={{ height: 150 }}
-          >
-            <div id="mouseTooltip"></div>
-          </div>
+          ></div>
           <span className="span-text">REVERSED</span>
           <div
             id="mouseOverlay"
@@ -206,9 +202,7 @@ export default function Playground() {
               )
             }
             style={{ height: 150 }}
-          >
-            <div id="mouseTooltip"></div>
-          </div>
+          ></div>
         </div>
       </div>
     </>

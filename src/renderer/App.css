@@ -205,11 +205,11 @@ body.dark-layout .tooltip {
     transform: translateX(-50%) translateY(calc(-100% - 10px));
   }
 }
-#mouseOverlay:hover .mouse-tooltip {
+/* #mouseOverlay:hover .mouse-tooltip {
   display: flex;
-}
+} */
 .mouse-tooltip {
-  display: none;
+  display: flex;
   position: absolute;
   background-color: rgba(240, 240, 240);
   padding: 5px 10px;
@@ -217,7 +217,7 @@ body.dark-layout .tooltip {
   font-size: 0.8rem;
   font-weight: bold;
   pointer-events: none;
-  /* white-space: nowrap; */
+  white-space: nowrap;
   max-width: 450px;
   width: max-content;
   box-shadow: 0 3px 5px 1px rgba(30, 30, 30, 0.1);
