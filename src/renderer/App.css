@@ -98,12 +98,11 @@ body.dark-layout .app-container {
 .app-navbar {
   position: fixed;
   z-index: 100;
-  width: calc(100% - 210px);
+  width: calc(100% - 200px);
   right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 15px 15px 0 0;
   -webkit-app-region: drag;
 }
 body.dark-layout .app-navbar {
@@ -374,10 +373,10 @@ body.dark-layout .icon.icon-status.icon-status-danger {
   border-radius: 0;
 }
 .icon-close:hover {
-  background-color: rgba(255, 20, 50, 0.5);
+  background-color: rgba(255, 20, 50, 0.75);
 }
 body.dark-layout .icon-close:hover {
-  background-color: rgba(255, 20, 50, 0.5);
+  background-color: rgba(255, 20, 50, 0.75);
 }
 
 .span-text {
@@ -898,12 +897,37 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
   transform: scale(1);
 }
 .react-tabs__tab-panel {
+  position: relative;
   display: none;
-  padding: 50px 15px 15px 15px;
+  padding: 130px 15px 15px 15px;
 }
 .react-tabs__tab-panel.react-tabs__tab-panel--selected {
   display: flex;
   width: 100%;
+}
+.panel-title {
+  position: absolute;
+  /* z-index: 0; */
+  top: 0;
+  left: 0;
+  /* background-color: rgba(30, 30, 30, 0.05); */
+  background-image: linear-gradient(
+    0deg,
+    rgba(30, 30, 30, 0.05),
+    rgba(30, 30, 30, 0)
+  );
+  width: 100%;
+  padding: 50px 15px 15px 15px;
+  align-items: flex-end;
+  backdrop-filter: blur(35px);
+}
+body.dark-layout .panel-title {
+  /* background-color: rgba(240, 240, 240, 0.05); */
+  background-image: linear-gradient(
+    0deg,
+    rgba(240, 240, 240, 0.05),
+    rgba(240, 240, 240, 0)
+  );
 }
 
 /* Full Width */
