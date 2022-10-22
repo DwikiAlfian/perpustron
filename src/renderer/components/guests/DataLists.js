@@ -53,6 +53,7 @@ export default function DataLists({
                           name: data?.name,
                           title: data?.title,
                           desc: data?.desc,
+                          insertedAt: data?.insertedAt,
                         });
                         e.stopPropagation();
                       }}
@@ -78,8 +79,25 @@ export default function DataLists({
                   }}
                 >
                   <div className="flex-inline flex-align-start flex-justify-between">
-                    <div className="flex-column gap-5">
-                      <span className="span-text">Purpose : {data?.desc}</span>
+                    <div className="flex-column gap-15 fw">
+                      <span className="span-text">{data?.desc}</span>
+                      <div
+                        className="flex-inline flex-justify-end gap-15 fw"
+                        style={{ fontStyle: 'italic' }}
+                      >
+                        <span
+                          className="span-text"
+                          style={{ fontSize: '0.7rem' }}
+                        >
+                          Inserted : {data?.insertedAt ? data?.insertedAt : '-'}
+                        </span>
+                        <span
+                          className="span-text"
+                          style={{ fontSize: '0.7rem' }}
+                        >
+                          Updated : {data?.updatedAt ? data?.updatedAt : '-'}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

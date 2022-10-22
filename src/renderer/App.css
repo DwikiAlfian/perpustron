@@ -115,7 +115,7 @@ body.dark-layout .app-navbar {
   top: 0;
   left: 0;
   background-color: rgba(30, 30, 30, 0.5);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(25px);
   border-radius: 3px;
   animation-name: fade-in;
   animation-duration: 200ms;
@@ -134,6 +134,22 @@ body.dark-layout .app-navbar {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.app-modal.app-modal-alt .app-modal-content {
+  transform: translate(0, 0);
+  top: 0;
+  left: unset;
+  right: 0;
+  height: 100%;
+  justify-content: flex-end;
+}
+.app-modal.app-modal-alt .app-modal-content .container {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+.app-modal.app-modal-alt .app-modal-content .container .container-content {
+  width: 100%;
 }
 body.dark-layout .app-modal {
   background-color: rgba(20, 20, 20, 0.7);
@@ -217,7 +233,7 @@ body.dark-layout .tooltip {
   font-size: 0.8rem;
   font-weight: bold;
   pointer-events: none;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   max-width: 450px;
   width: max-content;
   box-shadow: 0 3px 5px 1px rgba(30, 30, 30, 0.1);
@@ -755,7 +771,7 @@ body.dark-layout .select-input .select-list span:hover {
 .book-list .book-list-content .book-buttons .button-confirm-trans {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 350ms, transform 150ms;
+  transition: opacity 350ms, transform 150ms, background-color 150ms;
 }
 .book-list
   .book-list-content.book-list-open
@@ -925,6 +941,7 @@ body.dark-layout .react-tabs__tab-list .react-tabs__tab:hover {
   padding: 50px 15px 15px 15px;
   align-items: flex-end;
   backdrop-filter: blur(35px);
+  overflow: hidden;
 }
 body.dark-layout .panel-title {
   /* background-color: rgba(240, 240, 240, 0.05); */
@@ -953,6 +970,10 @@ body.dark-layout .panel-title {
 }
 .fade-fly-in {
   animation-name: fade-fly-in;
+  animation-duration: 1000ms;
+}
+.fade-left-in {
+  animation-name: fade-left-in;
   animation-duration: 1000ms;
 }
 @keyframes fade-in {
@@ -986,6 +1007,23 @@ body.dark-layout .panel-title {
   100% {
     opacity: 1;
     pointer-events: unset;
+  }
+}
+@keyframes fade-left-in {
+  0% {
+    /* pointer-events: none; */
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(0);
+  }
+  99% {
+    /* pointer-events: none; */
+  }
+  100% {
+    opacity: 1;
+    /* pointer-events: unset; */
   }
 }
 

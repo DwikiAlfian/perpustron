@@ -26,14 +26,14 @@ const AddBookModal = ({
     <>
       {bookModal && (
         <div
-          className="app-modal fade-in in-app-modal"
+          className="app-modal app-modal-alt fade-in in-app-modal"
           style={{ zIndex: 10 }}
           onClick={() => {
             modalFunction();
           }}
         >
           <div
-            className="app-modal-content"
+            className="app-modal-content fade-left-in"
             style={{ padding: 0, borderRadius: 7 }}
             onClick={(e) => {
               e.stopPropagation();
@@ -42,14 +42,13 @@ const AddBookModal = ({
             <div
               className="container"
               style={{
-                height: 'unset',
                 flexShrink: 0,
                 overflow: 'hidden',
                 padding: 25,
               }}
             >
-              <div className="container-content fade-fly-in gap-15 flex-column">
-                <h3>Add New Book to lists</h3>
+              <div className="container-content fade-left-in gap-15 flex-column">
+                <h1>Add New Book to lists</h1>
                 <div className="flex-column gap-15 flex-align-end">
                   <input
                     type="text"

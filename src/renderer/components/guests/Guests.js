@@ -17,6 +17,7 @@ export default function Guests({ guests, setGuests }) {
   const [name, setName] = useState();
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
+  const [insertedAt, setInsertedAt] = useState();
   const [search, setSearch] = useState();
   const [savedSearch, setSavedSearch] = useState();
 
@@ -24,11 +25,25 @@ export default function Guests({ guests, setGuests }) {
   const [guestModal, setGuestModal] = useState(false);
   const [editGuestModal, setEditGuestModal] = useState(false);
 
+  const dateNow = new Date().toLocaleDateString([], {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  const timeNow = new Date(Date.now()).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  const dateTimeNow = `${dateNow} ${timeNow}`;
+
   // Show / Hide Add Modal
   const modalFunction = () => {
     setName('');
     setTitle('');
     setDesc('');
+    setInsertedAt('');
     if (!guestModal) {
       setGuestModal((prevState) => !prevState);
     } else {
@@ -42,12 +57,13 @@ export default function Guests({ guests, setGuests }) {
   };
 
   // Set current data for editing
-  const setCurrentData = ({ id, index, name, title, desc }) => {
+  const setCurrentData = ({ id, index, name, title, desc, insertedAt }) => {
     setCurrentId(id);
     setCurrentIndex(index);
     setName(name);
     setTitle(title);
     setDesc(desc);
+    setInsertedAt(insertedAt);
     saveModalFunction();
   };
 
@@ -70,6 +86,7 @@ export default function Guests({ guests, setGuests }) {
         setName('');
         setTitle('');
         setDesc('');
+        setInsertedAt('');
         setEditGuestModal((prevState) => !prevState);
       }, 225);
     }
@@ -96,6 +113,7 @@ export default function Guests({ guests, setGuests }) {
               name: name,
               title: title,
               desc: desc,
+              insertedAt: dateTimeNow,
             },
             ...prevState,
           ];
@@ -106,6 +124,7 @@ export default function Guests({ guests, setGuests }) {
               name: name,
               title: title,
               desc: desc,
+              insertedAt: dateTimeNow,
             },
           ];
         }
@@ -137,6 +156,8 @@ export default function Guests({ guests, setGuests }) {
       name: name,
       title: title,
       desc: desc,
+      insertedAt: insertedAt,
+      updatedAt: dateTimeNow,
     });
     // Custom Function to Call Status
     // useStatus('success', 'Guest Updated');

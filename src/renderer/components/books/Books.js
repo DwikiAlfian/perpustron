@@ -18,11 +18,25 @@ export default function Books({ books, setBooks }) {
   const [year, setYear] = useState();
   const [stock, setStock] = useState();
   const [rack, setRack] = useState();
+  const [insertedAt, setInsertedAt] = useState();
   const [search, setSearch] = useState();
   const [savedSearch, setSavedSearch] = useState();
 
   const [bookModal, setBookModal] = useState(false);
   const [editBookModal, setEditBookModal] = useState(false);
+
+  const dateNow = new Date().toLocaleDateString([], {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  const timeNow = new Date(Date.now()).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  const dateTimeNow = `${dateNow} ${timeNow}`;
 
   const modalFunction = () => {
     setAuthor('');
@@ -32,6 +46,7 @@ export default function Books({ books, setBooks }) {
     setYear('');
     setStock('');
     setRack('');
+    setInsertedAt('');
     if (!bookModal) {
       setBookModal((prevState) => !prevState);
     } else {
@@ -54,6 +69,7 @@ export default function Books({ books, setBooks }) {
     year,
     stock,
     rack,
+    insertedAt,
   }) => {
     setCurrentId(id);
     setCurrentIndex(index);
@@ -64,6 +80,7 @@ export default function Books({ books, setBooks }) {
     setYear(year);
     setStock(stock);
     setRack(rack);
+    setInsertedAt(insertedAt);
     saveModalFunction();
   };
 
@@ -83,6 +100,7 @@ export default function Books({ books, setBooks }) {
         setYear('');
         setStock('');
         setRack('');
+        setInsertedAt('');
         setEditBookModal((prevState) => !prevState);
       }, 225);
     }
@@ -115,6 +133,7 @@ export default function Books({ books, setBooks }) {
               year: year,
               stock: stock,
               rack: rack,
+              insertedAt: dateTimeNow,
             },
             ...prevState,
           ];
@@ -129,6 +148,7 @@ export default function Books({ books, setBooks }) {
               year: year,
               stock: stock,
               rack: rack,
+              insertedAt: dateTimeNow,
             },
           ];
         }
@@ -156,6 +176,8 @@ export default function Books({ books, setBooks }) {
       year: year,
       stock: stock,
       rack: rack,
+      insertedAt: insertedAt,
+      updatedAt: dateTimeNow,
     });
     // Custom Function to Call Status
     useStatus('success', 'Updated Succesfully');

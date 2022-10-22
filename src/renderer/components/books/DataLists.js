@@ -12,14 +12,22 @@ export default function DataLists({
   deleteBook,
   setCurrentData,
 }) {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    setShow(false);
+    setTimeout(() => {
+      setShow(true);
+    }, 50);
+  }, [books]);
   return (
     <>
       {books &&
+        show &&
         books?.map((book, index) => {
           return (
             <>
               <div
-                className="book-list-content book-list-open fade-fly-in"
+                className="book-list-content book-list-open fade-fly-in gap-15"
                 // onClick={(e) => {
                 //   openDrawer(e);
                 // }}
@@ -29,18 +37,15 @@ export default function DataLists({
                 <div className="flex-inline flex-justify-between fw">
                   <div className="flex-column flex-align-start">
                     <h3>{book?.title}</h3>
-                    <span className="span-pill" style={{ marginTop: 5 }}>
-                      {book?.author}
-                    </span>
                   </div>
                 </div>
-                <div
-                  className="flex-inline flex-align-start flex-justify-between"
-                  style={{ marginTop: 15 }}
-                >
+                <div className="flex-inline flex-align-start flex-justify-between gap-10">
                   <div className="flex-column gap-5">
                     <span className="span-text">
                       Category : {book?.category}
+                    </span>
+                    <span className="span-text">
+                      Writer / Author : {book?.author}
                     </span>
                     <span className="span-text">
                       Distributor : {book?.distributor}
@@ -49,6 +54,17 @@ export default function DataLists({
                     <span className="span-text">Stock : {book?.stock}</span>
                     <span className="span-text">Rack : {book?.rack}</span>
                   </div>
+                </div>
+                <div
+                  className="flex-column flex-align-end gap-5 fw"
+                  style={{ fontStyle: 'italic' }}
+                >
+                  <span className="span-text" style={{ fontSize: '0.7rem' }}>
+                    Inserted : {book?.insertedAt ? book?.insertedAt : '-'}
+                  </span>
+                  <span className="span-text" style={{ fontSize: '0.7rem' }}>
+                    Updated : {book?.updatedAt ? book?.updatedAt : '-'}
+                  </span>
                 </div>
                 <div className="flex-inline flex-justify-end fw">
                   <div className="book-buttons">
@@ -65,6 +81,7 @@ export default function DataLists({
                           year: book?.year,
                           stock: book?.stock,
                           rack: book?.rack,
+                          insertedAt: book?.insertedAt,
                         });
                         e.stopPropagation();
                       }}

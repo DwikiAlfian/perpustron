@@ -44,7 +44,7 @@ const Container = () => {
       <div className="app-container">
         <Tabs>
           <TabList>
-            <h4 style={{ margin: '5px 0 25px 0' }}>.perpustakaan</h4>
+            <h4 style={{ margin: '5px 0 25px 0' }}>Library</h4>
             {/* <span className="span-text span-text-bold">LABEL</span> */}
             <Tab>
               <div className="flex-inline gap-10">
