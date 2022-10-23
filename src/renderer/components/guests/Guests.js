@@ -25,6 +25,12 @@ export default function Guests({ guests, setGuests }) {
   const [guestModal, setGuestModal] = useState(false);
   const [editGuestModal, setEditGuestModal] = useState(false);
 
+  // Local State
+  const [filter, setFilter] = useState(1);
+  // * Num 1 stands for Today
+  // ** Num 2 stands for Yesterday
+  // *** Num 3 stands for Last Week
+
   const dateNow = new Date().toLocaleDateString([], {
     day: '2-digit',
     month: 'long',
@@ -248,18 +254,47 @@ export default function Guests({ guests, setGuests }) {
             Add Guest
           </button>
         </div>
-        <div className="flex-inline flex-justify-between gap-15 fade-fly-in">
-          <div className="input-alt">
-            <BsSearch size={12} />
-            <input
-              className="input input-alt"
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by name..."
-            />
-          </div>
-        </div>
         <div className="container">
           <div className="container-content">
+            <div
+              className="flex-inline flex-justify-between gap-15 fade-fly-in"
+              style={{ marginBottom: 15 }}
+            >
+              <div className="flex-inline gap-5">
+                <button
+                  className={`${
+                    filter === 1 ? 'button-confirm-trans' : 'button-grey-alt'
+                  }`}
+                  onClick={() => setFilter(1)}
+                >
+                  Today
+                </button>
+                <button
+                  className={`${
+                    filter === 2 ? 'button-confirm-trans' : 'button-grey-alt'
+                  }`}
+                  onClick={() => setFilter(2)}
+                >
+                  Yesterday
+                </button>
+                <button
+                  className={`${
+                    filter === 3 ? 'button-confirm-trans' : 'button-grey-alt'
+                  }`}
+                  onClick={() => setFilter(3)}
+                >
+                  Last Week
+                </button>
+              </div>
+              <div className="input-alt">
+                <BsSearch size={12} />
+                <input
+                  className="input input-alt"
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search by name..."
+                />
+              </div>
+            </div>
             <div className="book-list">
               {!search && guests ? (
                 <DataLists

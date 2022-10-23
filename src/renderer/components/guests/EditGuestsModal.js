@@ -26,7 +26,7 @@ const EditGuestsModal = ({
         >
           <div
             className="app-modal-content fade-left-in"
-            style={{ padding: 0, borderRadius: 7 }}
+            style={{ padding: 0 }}
             onClick={(e) => {
               e.stopPropagation();
             }}

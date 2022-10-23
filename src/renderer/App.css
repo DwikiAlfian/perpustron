@@ -116,7 +116,6 @@ body.dark-layout .app-navbar {
   left: 0;
   background-color: rgba(30, 30, 30, 0.5);
   backdrop-filter: blur(25px);
-  border-radius: 3px;
   animation-name: fade-in;
   animation-duration: 200ms;
   opacity: 1;
@@ -129,7 +128,6 @@ body.dark-layout .app-navbar {
   background-color: rgba(240, 240, 240);
   min-width: 350px;
   padding: 15px 20px;
-  border-radius: 3px;
   box-shadow: 0 0 15px 1px rgba(30, 30, 30, 0.1);
   display: flex;
   flex-direction: column;
@@ -142,14 +140,17 @@ body.dark-layout .app-navbar {
   right: 0;
   height: 100%;
   justify-content: flex-end;
+  border-radius: 0;
 }
 .app-modal.app-modal-alt .app-modal-content .container {
   display: flex;
   align-items: flex-end;
   width: 100%;
+  border-radius: 0;
 }
 .app-modal.app-modal-alt .app-modal-content .container .container-content {
   width: 100%;
+  border-radius: 0;
 }
 body.dark-layout .app-modal {
   background-color: rgba(20, 20, 20, 0.7);
@@ -802,7 +803,7 @@ body.dark-layout .book-list .book-list-content {
   background-color: rgba(30, 30, 30, 0.5);
 }
 body.dark-layout .book-list .book-list-content:hover {
-  background-color: rgba(30, 30, 30, 0.65);
+  background-color: rgba(30, 30, 30, 0.8);
 }
 
 .flex-inline {

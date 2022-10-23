@@ -7,6 +7,7 @@ import AddBookModal from './AddBookModal';
 import DataLists from './DataLists';
 import EditBookModal from './EditBookModal';
 import useTooltip from 'renderer/hooks/useTooltip';
+import useAdvancedAlert from 'renderer/hooks/useAdvancedAlert';
 
 export default function Books({ books, setBooks }) {
   const [currentId, setCurrentId] = useState();
@@ -153,7 +154,8 @@ export default function Books({ books, setBooks }) {
           ];
         }
       });
-      useStatus('primary', 'Book Added');
+      // useStatus('primary', 'Book Added');
+      useAdvancedAlert('primary', 'Book Added');
       modalFunction();
     }
   };
@@ -162,7 +164,8 @@ export default function Books({ books, setBooks }) {
     const array = [...books];
     array?.splice(num, 1);
     setBooks(array);
-    useStatus('danger', 'Successfully Deleted');
+    // useStatus('danger', 'Successfully Deleted');
+    useAdvancedAlert('danger', 'Book deleted');
   };
 
   const saveBook = (num) => {
@@ -180,7 +183,8 @@ export default function Books({ books, setBooks }) {
       updatedAt: dateTimeNow,
     });
     // Custom Function to Call Status
-    useStatus('success', 'Updated Succesfully');
+    // useStatus('success', 'Updated Succesfully');
+    useAdvancedAlert('success', 'Book Updated');
     setBooks(array);
     setCurrentId('');
     setCurrentIndex('');
