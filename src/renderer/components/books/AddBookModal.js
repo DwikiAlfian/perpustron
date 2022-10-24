@@ -58,6 +58,7 @@ const AddBookModal = ({
                       setTitle(e.target.value);
                     }}
                     value={title}
+                    autoFocus
                   />
                   <input
                     type="text"

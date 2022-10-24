@@ -90,6 +90,7 @@ body.dark-layout ::-webkit-scrollbar-thumb:hover {
   width: 100%;
   overflow: hidden;
   box-shadow: 0 0 5px 1px rgba(30, 30, 30, 0.25);
+  padding-top: 35px;
 }
 body.dark-layout .app-container {
   background-color: rgba(30, 30, 30);
@@ -98,14 +99,17 @@ body.dark-layout .app-container {
 .app-navbar {
   position: fixed;
   z-index: 100;
-  width: calc(100% - 200px);
+  width: 100%;
   right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: rgba(50, 50, 50);
   -webkit-app-region: drag;
+  transition: background-color 350ms;
 }
 body.dark-layout .app-navbar {
+  background-color: rgba(45, 45, 45);
 }
 .app-modal {
   position: fixed;
@@ -257,20 +261,20 @@ body.dark-layout .tooltip {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  background-color: rgba(30, 30, 30, 0.1);
+  background-color: rgba(255, 255, 255, 0.075);
   cursor: pointer;
   transition: background-color 150ms;
   -webkit-app-region: no-drag;
 }
 .icon svg {
-  color: rgba(30, 30, 30, 0.25);
+  color: rgba(255, 255, 255, 0.75);
   transition: color 150ms;
 }
 .icon:hover {
-  background-color: rgba(30, 30, 30, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .icon:hover svg {
-  color: rgba(30, 30, 30, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 body.dark-layout .icon {
   background-color: rgba(240, 240, 240, 0.1);
@@ -293,7 +297,7 @@ body.dark-layout .icon:hover svg {
 .icon.icon-theme span {
   font-size: 0.8rem;
   font-weight: bold;
-  color: rgba(30, 30, 30, 0.5);
+  color: rgba(255, 255, 255, 0.75);
 }
 body.dark-layout .icon.icon-theme span {
   color: rgba(240, 240, 240, 0.5);
@@ -389,11 +393,23 @@ body.dark-layout .icon.icon-status.icon-status-danger {
 .app-navbar .icon {
   border-radius: 0;
 }
+.icon-close {
+  background-color: rgba(255, 20, 50, 0.45);
+}
 .icon-close:hover {
   background-color: rgba(255, 20, 50, 0.75);
 }
+.icon-close svg {
+  color: rgba(240, 240, 240);
+}
 .icon-close:hover svg {
   color: rgba(240, 240, 240);
+}
+body.dark-layout .icon-close svg {
+  color: rgba(240, 240, 240);
+}
+body.dark-layout .icon-close {
+  background-color: rgba(255, 20, 50, 0.45);
 }
 body.dark-layout .icon-close:hover {
   background-color: rgba(255, 20, 50, 0.75);
@@ -605,7 +621,7 @@ body.dark-layout .input {
   padding-left: 40px;
 }
 body.dark-layout .input-alt .input {
-  background-color: rgba(45, 45, 45);
+  background-color: rgba(55, 55, 55);
 }
 .input-alt svg {
   position: absolute;
@@ -1083,10 +1099,10 @@ body.dark-layout .panel-title {
     max-width: 40px;
   }
   7% {
-    top: 40px;
+    top: 75px;
   }
   9% {
-    top: 25px;
+    top: 60px;
     max-width: 40px;
   }
   24% {
@@ -1097,10 +1113,10 @@ body.dark-layout .panel-title {
   }
   50% {
     max-width: 40px;
-    top: 25px;
+    top: 60px;
   }
   52% {
-    top: 40px;
+    top: 75px;
   }
   62% {
     top: -125%;

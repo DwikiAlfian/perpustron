@@ -51,6 +51,7 @@ const EditGuestsModal = ({
                       setName(e.target.value);
                     }}
                     value={name}
+                    autoFocus
                   />
                   <input
                     type="text"
