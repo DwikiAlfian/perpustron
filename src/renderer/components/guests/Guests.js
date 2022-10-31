@@ -260,7 +260,7 @@ export default function Guests({ guests, setGuests }) {
               className="flex-inline flex-justify-between gap-15 fade-fly-in"
               style={{ marginBottom: 15 }}
             >
-              <div className="flex-inline gap-5">
+              {/* <div className="flex-inline gap-5">
                 <button
                   className={`${
                     filter === 1 ? 'button-confirm-trans' : 'button-grey-alt'
@@ -285,7 +285,7 @@ export default function Guests({ guests, setGuests }) {
                 >
                   Last Week
                 </button>
-              </div>
+              </div> */}
               <div className="input-alt">
                 <BsSearch size={12} />
                 <input
